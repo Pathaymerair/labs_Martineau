@@ -37,7 +37,7 @@ class RoleController extends Controller
      */
     public function store(RoleRequest $request)
     {
-        dd('hello');
+        
         $role = new Role;
         $role->roleName = $request->roleName;
         $role->roleSlug = $request->roleSlug;
@@ -62,9 +62,10 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit($id)
     {
-        //
+        $role = Role::find($id);
+        return view('pages.rolesEdit', compact('role'));
     }
 
     /**
@@ -74,13 +75,13 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(RoleRequest $request, $id)
     {
-        $role = Role::find($role);
+        $role = Role::find($id);
         $role->roleName = $request->roleName;
         $role->roleSlug = $request->roleSlug;
         $role->save();
-        return redirect()->back()->with('success', 'Role updated successfully');
+        return redirect('/roles')->with('success', 'Role updated successfully');
     }
 
     /**
@@ -89,9 +90,9 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        $role = Role::find($role);
+        $role = Role::find($id);
         $role->delete();
         return redirect()->back()->with('ded', 'Role has been deleted !');
     }

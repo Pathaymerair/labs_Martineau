@@ -36,6 +36,8 @@ Route::delete('/user/delete/{id}', 'UserController@destroy');
 Route::get('/roles', 'RoleController@index');
 Route::post('/roles/create', 'RoleController@store');
 Route::delete('/roles/{id}/delete', 'RoleController@destroy');
+Route::get('roles/{id}/edit', 'RoleController@edit');
+Route::post('/roles/update/{id}', 'RoleController@update');
 
 
 Auth::routes();
