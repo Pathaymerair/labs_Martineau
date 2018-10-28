@@ -12,6 +12,14 @@
 */
 
 Route::get('/', 'TitleController@index');
+Route::get('/editSite', 'TitleController@edit');
+Route::get('/editServices', 'TitleController@editServices');
+Route::get('/editBlog', 'TitleController@editBlog');
+Route::get('/editContact', 'TitleController@editContact');
+Route::post('/updateSite/{id}', 'TitleController@update');
+Route::post('/updateServicePage/{id}', 'TitleController@updateService');
+Route::post('/updateBlogPage/{id}', 'TitleController@updateBlog');
+Route::post('/updateContactPage/{id}', 'TitleController@updateContact');
 
 Route::get('/services', 'TitleController@indexServices');
 

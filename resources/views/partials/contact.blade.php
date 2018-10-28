@@ -28,7 +28,7 @@
 							<div class="col-sm-12">
 								<input type="text" name="subject" placeholder="{{$titles[0]->placeholderSubject}}">
 								<textarea name="message" placeholder="{{$titles[0]->placeholderMsg}}"></textarea>
-								<button class="site-btn">send</button>
+								<button class="site-btn">{{$titles[0]->mailButton}}</button>
 							</div>
 						</div>
 					</form>

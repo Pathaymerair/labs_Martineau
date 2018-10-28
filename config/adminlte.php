@@ -131,42 +131,26 @@ return [
             'text' => 'Roles',
             'url'  => '/roles',
             'icon' => 'lock',
-        ],
+        ],        
         [
-            'text'    => 'Multilevel',
+            'text'    => 'Manage site content',
             'icon'    => 'share',
             'submenu' => [
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Manage Home Page',
+                    'url'  => '/editSite',
                 ],
                 [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text'    => 'Manage Services page',
+                    'url'     => '/editServices',
                 ],
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Manage Blog Page',
+                    'url'  => '/editBlog',
+                ],
+                [
+                    'text' => 'Manage Contact Page',
+                    'url'  => '/editContact',
                 ],
             ],
         ],
