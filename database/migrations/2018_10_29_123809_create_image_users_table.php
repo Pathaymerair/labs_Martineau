@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddContactAdressDeuxToTitlesTable extends Migration
+class CreateImageUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddContactAdressDeuxToTitlesTable extends Migration
      */
     public function up()
     {
-        Schema::table('titles', function (Blueprint $table) {
-            $table->string('contactAdressDeux');
+        Schema::create('image_users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('imageUser');
+            $table->text('imageUserThumbnail');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddContactAdressDeuxToTitlesTable extends Migration
      */
     public function down()
     {
-        Schema::table('titles', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('image_users');
     }
 }

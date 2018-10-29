@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'TitleController@index');
+Route::get('/services', 'TitleController@indexServices');
+Route::get('/blog', 'TitleController@indexBlog');
+Route::get('/contact', 'TitleController@indexContact');
 Route::get('/editSite', 'TitleController@edit');
 Route::get('/editServices', 'TitleController@editServices');
 Route::get('/editBlog', 'TitleController@editBlog');
@@ -20,12 +23,6 @@ Route::post('/updateSite/{id}', 'TitleController@update');
 Route::post('/updateServicePage/{id}', 'TitleController@updateService');
 Route::post('/updateBlogPage/{id}', 'TitleController@updateBlog');
 Route::post('/updateContactPage/{id}', 'TitleController@updateContact');
-
-Route::get('/services', 'TitleController@indexServices');
-
-Route::get('/blog', 'TitleController@indexBlog');
-
-Route::get('/contact', 'TitleController@indexContact');
 
 Route::get('/users', 'UserController@index');
 Route::post('/user/create', 'UserController@store');
@@ -38,6 +35,10 @@ Route::post('/roles/create', 'RoleController@store');
 Route::delete('/roles/{id}/delete', 'RoleController@destroy');
 Route::get('roles/{id}/edit', 'RoleController@edit');
 Route::post('/roles/update/{id}', 'RoleController@update');
+
+Route::get('profil/{id}', 'ProfilController@index');
+
+Route::post('/profil/update/{id}', 'ProfilController@update');
 
 
 Auth::routes();

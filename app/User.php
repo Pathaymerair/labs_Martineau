@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Profil;
+use App\imageUser;
 
 class User extends Authenticatable
 {
@@ -31,5 +33,11 @@ class User extends Authenticatable
 
     public function Role(){
         return $this->belongsTo('App\Role');
+    }
+    public function Profil(){
+        return $this->hasOne('App\Profil', 'user_id');
+    }
+    public function ImageUser(){
+        return $this->belongsTo('App\imageUser', 'image_id', 'id');
     }
 }

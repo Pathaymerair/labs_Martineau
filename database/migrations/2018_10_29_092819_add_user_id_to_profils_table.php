@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddButtonProjectsAndCopyrightNameToTitlesTable extends Migration
+class AddUserIdToProfilsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddButtonProjectsAndCopyrightNameToTitlesTable extends Migration
      */
     public function up()
     {
-        Schema::table('titles', function (Blueprint $table) {
-            $table->string('projectsButton');
-            $table->string('copyrightName');
+        Schema::table('profils', function (Blueprint $table) {
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -26,8 +26,6 @@ class AddButtonProjectsAndCopyrightNameToTitlesTable extends Migration
      */
     public function down()
     {
-        Schema::table('titles', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('profils');
     }
 }

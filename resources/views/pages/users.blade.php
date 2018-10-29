@@ -11,8 +11,10 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Image de profil</th>
                 <th scope="col">Name</th>
-                <th scope="col">Rank</th>
+                <th scope="col">Role</th>
+                <th scope="col">Profil</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
               </tr>
@@ -23,8 +25,22 @@
                     
                 <tr>
                   <th scope="row">{{$user->id}}</th>
+                  <td>
+                      @if ($user->image_id)
+                      <img src="img/team/thumb/{{$user->imageUser->imageUserThumbnail}}" alt="">
+                      @endif
+                </td>
+                {{-- <td><img src="{{Storage::url($user->imageUser)}}" alt=""></td> --}}
                   <td>{{$user->name}}</td>
                   <td>{{$user->role->roleName}}</td>
+                  <td>
+                        <form action="profil/{{$user->id}}" method='GET'>
+                            @csrf
+                                <button class="btn btn-success">
+                                    Profil
+                                </button>
+                        </form>
+                  </td>
                   <td>
                       <form action="/user/edit/{{$user->id}}" method="GET">
                     @csrf

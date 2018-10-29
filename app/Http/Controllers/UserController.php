@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserEditRequest;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Role;
+use App\Profil;
+use App\ImageUser;
+use ImageIntervention;
 
 class UserController extends Controller
 {
@@ -19,7 +23,9 @@ class UserController extends Controller
     {
         $users = User::all();
         $roles = Role::all();
-        return view('pages.users', compact('users', 'roles'));
+        $profils = Profil::all();
+        $imageUsers = ImageUser::all();
+        return view('pages.users', compact('users', 'roles', 'profils', 'imageUsers'));
     }
 
     /**
@@ -44,9 +50,12 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role_id = $request->role_id;
-        $request->password = bcrypt('secret');
-        $user->password = $request->password;
+        // $user->password = $request->bcrypt('password');
+        $user->password = Hash::make($request->password);
         $user->save();
+        $profil = new Profil;
+        $profil->user_id = $user->id;
+        $profil->save();
         return redirect('/users')->with('success', 'User created successfully !');
 
     }
@@ -102,6 +111,10 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        if($user->profil){
+            $user->profil->delete();
+        }
+        
         $user->delete();
         return redirect()->back()->with('ded', 'User removed successfully !');
     }

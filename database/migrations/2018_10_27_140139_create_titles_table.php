@@ -24,6 +24,7 @@ class CreateTitlesTable extends Migration
             $table->text('introUn');
             $table->text('introDeux');
             $table->string('introButton');
+            $table->string('youtubeLink');
             $table->string('testiTitle');
             $table->string('servicesTitle');
             $table->string('overServicesTitle');
@@ -44,12 +45,16 @@ class CreateTitlesTable extends Migration
             $table->text('contactDesc');
             $table->string('contactInfo');
             $table->text('contactAdress');
+            $table->string('contactAdressDeux');
             $table->string('contactPhone');
             $table->string('contactMail');
             $table->text('copyright');
+            $table->string('copyrightName');
+            $table->string('copyrightRef');
             $table->string('servicesPage');
             $table->string('homeRef');
             $table->string('servicesRef');
+            $table->string('projectsButton');
             $table->string('newsletterTitle');
             $table->string('newsletterPlaceholder');
             $table->string('newsletterButton');

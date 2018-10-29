@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddYoutubeLinkToTitlesTable extends Migration
+class AddImageIdToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddYoutubeLinkToTitlesTable extends Migration
      */
     public function up()
     {
-        Schema::table('titles', function (Blueprint $table) {
-            $table->string('youtubeLink');
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedInteger('image_id')->nullable();
+            $table->foreign('image_id')->references('id')->on('image_users');
         });
     }
 
@@ -25,7 +26,7 @@ class AddYoutubeLinkToTitlesTable extends Migration
      */
     public function down()
     {
-        Schema::table('titles', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }
