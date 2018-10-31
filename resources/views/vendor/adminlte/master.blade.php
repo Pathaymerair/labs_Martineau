@@ -37,6 +37,10 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 </head>
 <body class="hold-transition @yield('body_class')">
 
@@ -45,6 +49,7 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
 
 @if(config('adminlte.plugins.select2'))
     <!-- Select2 -->

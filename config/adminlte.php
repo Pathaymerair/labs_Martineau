@@ -152,8 +152,19 @@ return [
                     'text' => 'Manage Contact Page',
                     'url'  => '/editContact',
                 ],
+
             ],
         ],
+        [
+            'text' => 'Images random',
+            'url'  => '/imagesRandom',
+            'icon' => 'image',
+        ], 
+        [
+            'text' => 'Posts',
+            'url'  => '/posts',
+            'icon' => 'newspaper-o',
+        ], 
         'LABELS',
         [
             'text'       => 'Important',

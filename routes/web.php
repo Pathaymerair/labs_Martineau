@@ -29,6 +29,8 @@ Route::post('/user/create', 'UserController@store');
 Route::get('/user/edit/{id}', 'UserController@edit');
 Route::post('/user/update/{id}', 'UserController@update');
 Route::delete('/user/delete/{id}', 'UserController@destroy');
+Route::get('/getRandom', 'userController@random');
+
 
 Route::get('/roles', 'RoleController@index');
 Route::post('/roles/create', 'RoleController@store');
@@ -37,10 +39,19 @@ Route::get('roles/{id}/edit', 'RoleController@edit');
 Route::post('/roles/update/{id}', 'RoleController@update');
 
 Route::get('profil/{id}', 'ProfilController@index');
-
 Route::post('/profil/update/{id}', 'ProfilController@update');
 
-
+Route::get('/imagesRandom', 'RandomController@index');
+Route::post('imagesRandom/create', 'RandomController@store');
+Route::delete('/delete/random/{id}', 'RandomController@destroy');
 Auth::routes();
+
+
+Route::get('/posts', 'PostController@index');
+Route::get('/post/{id}', 'PostController@show');
+Route::post('/posts/create', 'PostController@store');
+Route::get('/post/edit/{id}', 'PostController@edit');
+Route::post('/posts/update/{id}', 'PostController@update');
+Route::delete('/post/delete/{id}', 'PostController@destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');

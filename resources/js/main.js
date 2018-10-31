@@ -20,7 +20,6 @@ function loader() {
 }
 
 
-
 /*------------------
 	Navigation
 --------------------*/
@@ -269,3 +268,4 @@ function progressCircle() {
 	progressCircle();
 
 })(jQuery);
+

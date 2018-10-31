@@ -40,4 +40,7 @@ class User extends Authenticatable
     public function ImageUser(){
         return $this->belongsTo('App\imageUser', 'image_id', 'id');
     }
+    public function Posts(){
+        return $this->hasMany('App\Post', 'user_id');
+    }
 }

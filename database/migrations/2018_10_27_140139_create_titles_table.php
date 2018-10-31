@@ -13,6 +13,7 @@ class CreateTitlesTable extends Migration
      */
     public function up()
     {
+        if (!Schema::hasTable('titles')){
         Schema::create('titles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('logo');
@@ -72,6 +73,7 @@ class CreateTitlesTable extends Migration
             $table->string('contactRef');
             $table->timestamps();
         });
+    }
     }
 
     /**

@@ -148,6 +148,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
+
 
         /*
          * Package Service Providers...

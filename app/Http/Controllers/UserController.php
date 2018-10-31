@@ -118,4 +118,8 @@ class UserController extends Controller
         $user->delete();
         return redirect()->back()->with('ded', 'User removed successfully !');
     }
+    public function random(){
+        $user = User::inRandomOrder()->get();
+        return redirect('/');
+    }
 }

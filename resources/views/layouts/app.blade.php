@@ -21,6 +21,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+   
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     
@@ -101,6 +104,7 @@
     @yield('contactHeader')
     @yield('about')
     @yield('blogContent')
+    @yield('post')
     @yield('map')
     @yield('testimonials')
     @yield('services')
@@ -111,6 +115,7 @@
     @yield('newsletter')
     @yield('contact')
     @yield('footer')
+
     
 
 
