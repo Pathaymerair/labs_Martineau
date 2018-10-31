@@ -1,11 +1,10 @@
 <?php
 
 namespace App;
-use App\State;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Comment extends Model
 {
     public function State(){
         return $this->belongsTo('App\State');
@@ -13,7 +12,7 @@ class Post extends Model
     public function User(){
         return $this->belongsTo('App\User');
     }
-    public function Comment(){
-        return $this->hasMany('App\Comment');
+    public function Post(){
+        return $this->belongsTo('App\Post');
     }
 }

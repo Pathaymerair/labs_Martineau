@@ -165,6 +165,11 @@ return [
             'url'  => '/posts',
             'icon' => 'newspaper-o',
         ], 
+        [
+            'text' => 'Comments',
+            'url'  => '/comments',
+            'icon' => 'comment-o',
+        ], 
         'LABELS',
         [
             'text'       => 'Important',

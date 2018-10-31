@@ -54,4 +54,10 @@ Route::get('/post/edit/{id}', 'PostController@edit');
 Route::post('/posts/update/{id}', 'PostController@update');
 Route::delete('/post/delete/{id}', 'PostController@destroy');
 
+Route::get('/comments', 'CommentController@index');
+Route::get('/comment/{id}/edit', 'CommentController@edit');
+Route::post('/comment/create/{id}', 'CommentController@create');
+Route::post('/comment/{id}', 'CommentController@update');
+Route::delete('/comment/delete/{id}', 'CommentController@destroy')->middleware('can:user');
+
 Route::get('/home', 'HomeController@index')->name('home');

@@ -7,6 +7,8 @@ use App\Http\Requests\PostRequest;
 use App\Post;
 use App\User;
 use App\Title;
+use App\Comment;
+use App\ImageUser;
 use Auth;
 use ImageIntervention;
 
@@ -20,6 +22,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with('user')->get();
+        
         // dd($posts);
         // $posts = User::find('user_id')->posts;
         // $posts = $user->posts;
@@ -90,7 +93,9 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $titles = Title::all();
-        return view('blogPost', compact('post', 'titles'));
+        $imageUsers = ImageUser::all();
+        $comments = Comment::with('post')->get();
+        return view('blogPost', compact('post', 'titles', 'comments', 'imagesUsers'));
     }
 
     /**
