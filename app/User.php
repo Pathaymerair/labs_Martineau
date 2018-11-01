@@ -49,4 +49,7 @@ class User extends Authenticatable
     public function Categorie(){
         return $this->hasMany('App\Categorie');
     }
+    public function Tag(){
+        return $this->hasMany('App\Tag');
+    }
 }

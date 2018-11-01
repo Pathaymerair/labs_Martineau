@@ -66,4 +66,10 @@ Route::get('/categorie/edit/{id}', 'CategorieController@edit');
 Route::post('/categorie/update/{id}', 'CategorieController@update');
 Route::delete('/categorie/delete/{id}', 'CategorieController@destroy');
 
+Route::get('/tags', 'TagController@index');
+Route::post('/tag/create', 'TagController@create');
+Route::get('/tag/edit/{id}', 'TagController@edit');
+Route::post('/tag/update/{id}', 'TagController@update');
+Route::delete('/tag/delete/{id}', 'TagController@destroy');
+
 Route::get('/home', 'HomeController@index')->name('home');

@@ -177,7 +177,7 @@ return [
                 ],
                 [
                     'text' => 'Tags',
-                    'url'  => '',
+                    'url'  => '/tags',
                     'icon' => 'tags'
                 ],
                 [

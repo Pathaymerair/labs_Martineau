@@ -8,7 +8,7 @@
     
     
 
-    <h1>Create Categorie</h1>
+    <h1>Create Tag</h1>
     @if (\Session::has('success'))
     <div class="alert alert-success">
         <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
@@ -21,16 +21,16 @@
         
     </div><br />
     @endif
-    <form action="/categorie/create" method="POST">
+    <form action="/tag/create" method="POST">
         @csrf
             <div class="form-group">
-                <label for="nameCatego">Categorie Name</label>
-                <input type="text" id='nameCatego' name='nameCatego' class='form-control' value='{{ old('nameCatego')}}'>
+                <label for="nameTag">Tag Name</label>
+                <input type="text" id='nameTag' name='nameTag' class='form-control' value='{{ old('nameTag')}}'>
             </div>
             <button class="btn btn-success">Submit</button>
         </form>
 
-    <h1>Categories</h1>
+    <h1>Tags</h1>
     @if (\Session::has('updated'))
     <div class="alert alert-success">
         <p>{{ \Session::get('updated') }} <i class="close icon" data-dismiss='alert'></i></p>
@@ -50,22 +50,22 @@
         </thead>
         <tbody>
 
-            @foreach ($categories as $categorie)
+            @foreach ($tags as $tag)
                 
             <tr>
-              <th scope="row">{{$categorie->id}}</th>
+              <th scope="row">{{$tag->id}}</th>
 
-              <td>{{$categorie->nameCatego}}</td>
-              <td>{{$categorie->user->name}}</td>
-                <td>{{$categorie->state->etat}}</td>
+              <td>{{$tag->nameTag}}</td>
+              <td>{{$tag->user->name}}</td>
+                <td>{{$tag->state->etat}}</td>
               <td>
-                  <form action="/categorie/edit/{{$categorie->id}}" method="GET">
+                  <form action="/tag/edit/{{$tag->id}}" method="GET">
                 @csrf
                 <button class="btn btn-warning">Edit</button>
                 </form>
               </td>
               <td>
-                  <form action="/categorie/delete/{{$categorie->id}}" method="POST">
+                  <form action="/tag/delete/{{$tag->id}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger">Delete</button>
