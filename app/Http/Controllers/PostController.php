@@ -9,6 +9,7 @@ use App\User;
 use App\Title;
 use App\Comment;
 use App\ImageUser;
+use App\Categorie;
 use Auth;
 use ImageIntervention;
 
@@ -92,6 +93,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        $categories = Categorie::all();
         $titles = Title::all();
         $imageUsers = ImageUser::all();
         $comments = Comment::with('post')->get();

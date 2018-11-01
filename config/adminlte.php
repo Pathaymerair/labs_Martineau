@@ -134,7 +134,7 @@ return [
         ],        
         [
             'text'    => 'Manage site content',
-            'icon'    => 'share',
+            'icon'    => 'sitemap',
             'submenu' => [
                 [
                     'text' => 'Manage Home Page',
@@ -155,21 +155,40 @@ return [
 
             ],
         ],
+
         [
-            'text' => 'Images random',
-            'url'  => '/imagesRandom',
-            'icon' => 'image',
-        ], 
-        [
-            'text' => 'Posts',
-            'url'  => '/posts',
-            'icon' => 'newspaper-o',
-        ], 
-        [
-            'text' => 'Comments',
-            'url'  => '/comments',
-            'icon' => 'comment-o',
-        ], 
+            'text'    => 'Manage posts content',
+            'icon'    => 'pencil-square-o',
+            'submenu' => [
+                [
+                    'text' => 'Posts',
+                    'url'  => '/posts',
+                    'icon' => 'newspaper-o',
+                ], 
+                [
+                    'text' => 'Comments',
+                    'url'  => '/comments',
+                    'icon' => 'comment-o',
+                ], 
+                [
+                    'text' => 'Categories',
+                    'url'  => '/categories',
+                    'icon' => 'thumb-tack'
+                ],
+                [
+                    'text' => 'Tags',
+                    'url'  => '',
+                    'icon' => 'tags'
+                ],
+                [
+                    'text' => 'Images random',
+                    'url'  => '/imagesRandom',
+                    'icon' => 'image',
+                ], 
+
+            ],
+        ],
+
         'LABELS',
         [
             'text'       => 'Important',

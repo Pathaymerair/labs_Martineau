@@ -60,4 +60,10 @@ Route::post('/comment/create/{id}', 'CommentController@create');
 Route::post('/comment/{id}', 'CommentController@update');
 Route::delete('/comment/delete/{id}', 'CommentController@destroy')->middleware('can:user');
 
+Route::get('/categories', 'CategorieController@index');
+Route::post('/categorie/create', 'CategorieController@create');
+Route::get('/categorie/edit/{id}', 'CategorieController@edit');
+Route::post('/categorie/update/{id}', 'CategorieController@update');
+Route::delete('/categorie/delete/{id}', 'CategorieController@destroy');
+
 Route::get('/home', 'HomeController@index')->name('home');
