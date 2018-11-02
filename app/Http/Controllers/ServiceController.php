@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Service;
 use App\Icon;
+use App\State;
 use App\Http\Requests\ServiceRequest;
 
 class ServiceController extends Controller

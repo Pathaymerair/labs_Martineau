@@ -9,8 +9,8 @@
                     <div class="post-thumbnail">
                         <img src="/img/blog/{{$post->image}}" alt="">
                         <div class="post-date">
-                            <h2>{{$post->date}}</h2>
-                            <h3>{{$post->month}}</h3>
+                            <h2>{{$post->created_at->format('d')}}</h2>
+                            <h3>{{$post->created_at->format('M Y')}}</h3>
                         </div>
                     </div>
                     <div class="post-content">

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'TitleController@index');
-Route::get('/services', 'TitleController@indexServices');
+Route::get('/service', 'TitleController@indexServices');
 Route::get('/blog', 'TitleController@indexBlog');
 Route::get('/contact', 'TitleController@indexContact');
 Route::get('/editSite', 'TitleController@edit');
@@ -109,5 +109,14 @@ Route::post('/carou/create', 'CarouselController@create');
 Route::get('/carou/edit/{id}', 'CarouselController@edit');
 Route::post('/carou/update/{id}', 'CarouselController@update');
 Route::delete('/carou/delete/{id}', 'CarouselController@destroy');
+
+Route::get('/insta', 'InstagramController@index');
+Route::post('/insta/create', 'InstagramController@create');
+Route::get('/insta/edit/{id}', 'InstagramController@edit');
+Route::post('/insta/update/{id}', 'InstagramController@update');
+Route::delete('/insta/delete/{id}', 'InstagramController@destroy');
+
+Route::post('/contact/create', 'ContactController@store');
+Route::post('/news/create', 'NewsletterController@store');
 
 Route::get('/home', 'HomeController@index')->name('home');

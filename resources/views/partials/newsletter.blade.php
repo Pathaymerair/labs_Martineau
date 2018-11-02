@@ -9,8 +9,9 @@
 				</div>
 				<div class="col-md-9">
 					<!-- newsletter form -->
-					<form class="nl-form">
-						<input type="text" placeholder="{{$titles[0]->newsletterPlaceholder}}">
+					<form class="nl-form" action="/news/create" method="POST">
+						@csrf
+						<input type="text" name='newsMail' placeholder="{{$titles[0]->newsletterPlaceholder}}" value='{{old('newsMail')}}'>
 						<button class="site-btn btn-2">{{$titles[0]->newsletterButton}}</button>
 					</form>
 				</div>

@@ -171,6 +171,10 @@ return [
                     'text' => 'Manage Carousel images',
                     'url'  => '/carousels',
                 ],
+                [
+                    'text' => 'Manage Instagram images',
+                    'url'  => '/insta',
+                ],
 
             ],
         ],

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Title;
 use App\Icon;
+use App\Service;
 use ImageIntervention;
 use App\Http\Requests\EditHomeRequest;
 use App\Http\Requests\EditServicesRequest;
@@ -15,8 +16,10 @@ class TitleController extends Controller
 {
     public function index(){
         $titles = Title::all();
-        $icons = Icon::all();
-        return view('welcome', compact('titles', 'icons'));
+        $services = service::with('icon')->get();
+      
+        $services = Service::paginate(9);
+        return view('welcome', compact('titles', 'icons', 'services'));
     }
 
     public function indexBlog(){
@@ -25,7 +28,10 @@ class TitleController extends Controller
     }
     public function indexServices(){
         $titles = Title::all();
-        return view('services', compact('titles'));
+        $services = service::with('icon')->get();
+      
+        $services = Service::paginate(9);
+        return view('services', compact('titles', 'services'));
     }
     public function indexContact(){
         $titles = Title::all();

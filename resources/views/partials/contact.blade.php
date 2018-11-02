@@ -17,17 +17,18 @@
 				</div>
 				<!-- contact form -->
 				<div class="col-md-6 col-pull">
-					<form class="form-class" id="con_form">
+					<form class="form-class" id="con_form" action="/contact/create" method="POST">
+						@csrf
 						<div class="row">
 							<div class="col-sm-6">
-								<input type="text" name="name" placeholder="{{$titles[0]->placeholderName}}">
+								<input type="text" name="nameContact" placeholder="{{$titles[0]->placeholderName}}">
 							</div>
 							<div class="col-sm-6">
-								<input type="text" name="email" placeholder="{{$titles[0]->placeholderMail}}">
+								<input type="text" name="emailContact" placeholder="{{$titles[0]->placeholderMail}}">
 							</div>
 							<div class="col-sm-12">
-								<input type="text" name="subject" placeholder="{{$titles[0]->placeholderSubject}}">
-								<textarea name="message" placeholder="{{$titles[0]->placeholderMsg}}"></textarea>
+								<input type="text" name="subjectContact" placeholder="{{$titles[0]->placeholderSubject}}">
+								<textarea name="msgContact" placeholder="{{$titles[0]->placeholderMsg}}"></textarea>
 								<button class="site-btn">{{$titles[0]->mailButton}}</button>
 							</div>
 						</div>
