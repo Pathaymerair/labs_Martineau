@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+
     <h1>Manage Site</h1>
 
     @if (\Session::has('success'))
@@ -95,19 +95,19 @@
         <div class="intro-video">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <img src="img/video.jpg" alt="">
+                    {{-- <img src="img/video.jpg" alt="">
                     <a href="{{$titles[0]->youtubeLink}}" class="video-popup">
                         <i class="fa fa-play"></i>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="youtubeLink">youtubeLink</label>
-            <input type="text" id='youtubeLink' name='youtubeLink' class='form-control' value="{{$titles[0]->youtubeLink}}">
-        </div>
     </div>
 </div>
+                <div class="form-group">
+                    <label for="youtubeLink">youtubeLink</label>
+                    <input type="text" id='youtubeLink' name='youtubeLink' class='form-control' value="{{$titles[0]->youtubeLink}}">
+                </div>
 </div>
 
 

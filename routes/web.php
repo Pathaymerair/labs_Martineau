@@ -104,4 +104,10 @@ Route::get('/testimonial/edit/{id}', 'TestimonialController@edit');
 Route::post('/testimonial/update/{id}', 'TestimonialController@update');
 Route::delete('/testimonial/delete/{id}', 'TestimonialController@destroy');
 
+Route::get('/carousels', 'CarouselController@index');
+Route::post('/carou/create', 'CarouselController@create');
+Route::get('/carou/edit/{id}', 'CarouselController@edit');
+Route::post('/carou/update/{id}', 'CarouselController@update');
+Route::delete('/carou/delete/{id}', 'CarouselController@destroy');
+
 Route::get('/home', 'HomeController@index')->name('home');

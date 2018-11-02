@@ -2,7 +2,6 @@
 
 @section('content')
 
-<div class="container">
 
     @if (\Session::has('success'))
     <div class="alert alert-success">

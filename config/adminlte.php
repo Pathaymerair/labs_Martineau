@@ -167,6 +167,10 @@ return [
                     'text' => 'Manage Contact Page',
                     'url'  => '/editContact',
                 ],
+                [
+                    'text' => 'Manage Carousel images',
+                    'url'  => '/carousels',
+                ],
 
             ],
         ],
