@@ -88,25 +88,25 @@
                 <div class="post-date">
                         <div class="form-group">
                                 <label for="date">Day</label>
-                                <input type="number" min="1" max="31" id="date" name='date'>
+                                <input type="number" min="1" max="31" id="date" name='date' value='{{ old('date')}}'>
                         </div>
                         <div class="form-group">
                             <label for="month">Mois</label>
-                            <input type="month" id="month" name='month'>
+                            <input type="month" id="month" name='month' value='{{ old('month')}}'>
                     </div>
                 </div>
             </div>
             <div class="post-content">
-                <h2 class="post-title">Just a simple blog post</h2>
+              
                 <div class="form-group">
                         <label for="titre">Titre Article</label>
-                        <input type="text" id="titre" name='titre'>
+                        <input type="text" id="titre" name='titre' value='{{ old('titre')}}'>
                 </div>
 
                 <div class="form-group">
                         <div >
                                 <textarea name="body" id="body" cols="30" rows="10">
-                                 
+                                        {{ old('body')}}
                                 </textarea>
                             <script>
                                 CKEDITOR.replace( 'body' );
@@ -118,6 +118,27 @@
                         <textarea name="body" id="body" cols="80" rows="10"></textarea> --}}
 
                 </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <h5>Catégories</h5>
+                        @foreach ($categories as $categorie)
+                            <label class="checkbox-inline">
+                              <input type="checkbox" name='categorie_id[]' id='categorie_id' value='{{$categorie->id}}'>
+                              {{$categorie->nameCatego}}
+                            </label>
+                              @endforeach
+                        </div>
+                        <div class="checkbox">
+                            <h5>Tags</h5>
+                                @foreach ($tags as $tag)
+                                    <label class="checkbox-inline">
+                                      <input type="checkbox" name='tag_id[]' id='tag_id' value='{{$tag->id}}'>
+                                      # {{$tag->nameTag}}
+                                    </label>
+                                @endforeach
+                        </div>
+
+                  </div>
             </div>
         </div>
 

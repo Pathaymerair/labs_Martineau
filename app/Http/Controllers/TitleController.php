@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Title;
+use App\Icon;
 use ImageIntervention;
 use App\Http\Requests\EditHomeRequest;
 use App\Http\Requests\EditServicesRequest;
@@ -14,7 +15,8 @@ class TitleController extends Controller
 {
     public function index(){
         $titles = Title::all();
-        return view('welcome', compact('titles'));
+        $icons = Icon::all();
+        return view('welcome', compact('titles', 'icons'));
     }
 
     public function indexBlog(){

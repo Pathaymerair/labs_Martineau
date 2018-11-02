@@ -8,6 +8,7 @@ use App\Comment;
 use App\User;
 use App\Post;
 use App\Random;
+use App\State;
 use Auth;
 
 class CommentController extends Controller
@@ -45,12 +46,14 @@ class CommentController extends Controller
         $comments = Comment::all();
         $comments = Comment::with('user')->get();
         $comments = Comment::with('post')->get();
+    
         return view('pages.comment', compact('comments'));
     }
 
     public function edit($id){
         $comment = Comment::find($id);
-        return view('pages.commentEdit', compact('comment'));
+        $states = State::all();
+        return view('pages.commentEdit', compact('comment', 'states'));
     }
 
     public function update(CommentRequest $request, $id){
@@ -59,6 +62,7 @@ class CommentController extends Controller
         $comment->email = $request->email;
         $comment->subject = $request->subject;
         $comment->msg = $request->msg;
+        $comment->state_id = $request->state_id;
         $comment->save();
         return redirect('/comments')->with('success', 'Comment updated !');
     }

@@ -12,4 +12,7 @@ class Categorie extends Model
     public function State(){
         return $this->belongsTo('App\State');
     }
+    public function Post(){
+        return $this->belongsToMany('App\Post');
+    }
 }

@@ -73,6 +73,14 @@
                     <textarea name="body" id="body" cols="80" rows="10"></textarea> --}}
 
             </div>
+            <div class="form-group">
+                    <label for="state_id">Etat</label>
+                    <select name="state_id" id="state_id">
+                        @foreach ($states as $state)
+                            <option value="{{$state->id}}">{{$state->etat}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
         </div>
 

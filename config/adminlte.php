@@ -131,7 +131,12 @@ return [
             'text' => 'Roles',
             'url'  => '/roles',
             'icon' => 'lock',
-        ],        
+        ],     
+        [
+            'text' => 'Icons',
+            'url'  => '/icons',
+            'icon' => 'fonticons',
+        ],       
         [
             'text'    => 'Manage site content',
             'icon'    => 'sitemap',

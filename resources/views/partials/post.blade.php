@@ -7,7 +7,7 @@
                 <!-- Single Post -->
                 <div class="single-post">
                     <div class="post-thumbnail">
-                        <img src="img/blog/{{$post->image}}" alt="">
+                        <img src="/img/blog/{{$post->image}}" alt="">
                         <div class="post-date">
                             <h2>{{$post->date}}</h2>
                             <h3>{{$post->month}}</h3>
@@ -16,8 +16,14 @@
                     <div class="post-content">
                         <h2 class="post-title">{{$post->titre}}</h2>
                         <div class="post-meta">
-                            <a href="">Loredana Papp</a>
-                            <a href="">Design, Inspiration</a>
+                            <a href="">
+                                @foreach($categories as $categorie)
+                                    <span>{{$categorie->nameCatego}} | </span>
+                                    @endforeach
+                                </a>
+                            <a href="">@foreach($tags as $tag)
+                                    <span>{{$tag->nameTag}}, </span>
+                                    @endforeach</a>
                             <a href="">2 Comments</a>
                         </div>
                         {{$post->body}}
@@ -25,10 +31,10 @@
                     <!-- Post Author -->
                     <div class="author">
                         <div class="avatar">
-                            <img src="img/avatar/03.jpg" alt="">
+                                <img src="/img/team/imgnm/{{$post->user->imageUser->imageUser}}" alt="">
                         </div>
                         <div class="author-info">
-                            <h2>Lore Williams, <span>Author</span></h2>
+                            <h2>{{$post->user->name}}, <span>Author</span></h2>
                             <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
                         </div>
                     </div>

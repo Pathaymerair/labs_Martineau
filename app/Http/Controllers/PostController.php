@@ -10,6 +10,7 @@ use App\Title;
 use App\Comment;
 use App\ImageUser;
 use App\Categorie;
+use App\Tag;
 use Auth;
 use ImageIntervention;
 
@@ -31,11 +32,13 @@ class PostController extends Controller
         // $posts = User::find(1);
         // $user = User::all();
         $posts = Post::all();
+        $categories = Categorie::all();
+        $tags = Tag::all();
         // $post = Post::find(1);
         // $users = Post::find(1)->users;
         // $users = User::find(1)->get();
         // $user = User::find($id);
-        return view('pages.posts', compact('posts', 'users'));
+        return view('pages.posts', compact('posts', 'users', 'categories', 'tags'));
     }
 
     /**
@@ -74,13 +77,20 @@ class PostController extends Controller
 
         }
         $post->user_id = Auth::User()->id;
-     
+
         $post->date = $request->date;
         $post->month = $request->month;
         $post->titre = $request->titre;
         $post->body = $request->body;
      
         $post->save();
+
+        $categories = $request->categorie_id;
+        $post->categorie()->attach($categories);
+
+        $tags = $request->tag_id;
+        $post->tag()->attach($tags);
+
         return redirect()->back()->with('success', 'Post created !');
     }
 
@@ -93,11 +103,19 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        $categories = Categorie::all();
+        
         $titles = Title::all();
         $imageUsers = ImageUser::all();
         $comments = Comment::with('post')->get();
-        return view('blogPost', compact('post', 'titles', 'comments', 'imagesUsers'));
+        // $categories = Categorie::with('post')->get();
+        $categories = $post->categorie()->orderBy('id')->get();
+        $tags = $post->tag()->orderBy('id')->get();
+        $user = $post->user()->get();
+      
+
+      
+  
+        return view('blogPost', compact('post', 'titles', 'comments', 'imagesUsers', 'categories', 'tags', 'user'));
     }
 
     /**
@@ -140,6 +158,7 @@ class PostController extends Controller
         $post->month = $request->month;
         $post->titre = $request->titre;
         $post->body = $request->body;
+        $post->state_id = $request->state_id;
         $post->save();
         return redirect('/posts')->with('success', 'Post updated !');
     }

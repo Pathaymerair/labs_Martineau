@@ -15,6 +15,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
 
+    <link href="img/favicon.ico" rel="shortcut icon"/>
+
     @if(config('adminlte.plugins.select2'))
         <!-- Select2 -->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css">
@@ -22,6 +24,8 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
+    
+ 
 
     @if(config('adminlte.plugins.datatables'))
         <!-- DataTables with bootstrap 3 style -->
@@ -41,6 +45,12 @@
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 
 <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('css/style.css')}}" >
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}"/>
+<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}"/>
+<link rel="stylesheet" href="{{ asset('css/flaticon.css')}}"/>
+<link rel="stylesheet" href="{{ asset('css/magnific-popup.css')}}"/>
+<link rel="stylesheet" href="{{ asset('css/owl.carousel.css')}}"/>
 </head>
 <body class="hold-transition @yield('body_class')">
 

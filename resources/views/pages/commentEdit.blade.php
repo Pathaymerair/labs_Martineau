@@ -49,6 +49,14 @@
                         
                         <textarea name="msg" placeholder="Message" rows="20" cols="70">{{$comment->msg}}</textarea>
                     </div>
+                    <div class="form-group">
+                            <label for="state_id">Etat</label>
+                            <select name="state_id" id="state_id">
+                                @foreach ($states as $state)
+                                    <option value="{{$state->id}}">{{$state->etat}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     <button class="btn btn-success">submit</button>
                 </div>
             </form>

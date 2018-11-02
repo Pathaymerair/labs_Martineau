@@ -72,4 +72,10 @@ Route::get('/tag/edit/{id}', 'TagController@edit');
 Route::post('/tag/update/{id}', 'TagController@update');
 Route::delete('/tag/delete/{id}', 'TagController@destroy');
 
+Route::get('/icons', 'IconController@index');
+Route::post('/icon/create', 'IconController@create');
+Route::get('/icon/edit/{id}', 'IconController@edit');
+Route::post('/icon/update/{id}', 'IconController@update');
+Route::delete('/icon/delete/{id}', 'IconController@destroy');
+
 Route::get('/home', 'HomeController@index')->name('home');
