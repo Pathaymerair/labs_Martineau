@@ -28,12 +28,13 @@
                 <input type="text" id='nameTag' name='nameTag' class='form-control' value='{{$tag->nameTag}}'>
             </div>
             <div class="form-group">
-                <label for="state_id">Etat</label>
+                <label for="state_id">Etat
                 <select name="state_id" id="state_id">
                     @foreach ($states as $state)
                         <option value="{{$state->id}}">{{$state->etat}}</option>
                     @endforeach
                 </select>
+            </label>
             </div>
             <button class="btn btn-success">Submit</button>
         </form>

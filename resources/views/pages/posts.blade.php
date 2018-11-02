@@ -112,10 +112,6 @@
                                 CKEDITOR.replace( 'body' );
                             </script> 
                             </div>
-                      
-                              
-                        {{-- <label for="body">Contenu Article</label>
-                        <textarea name="body" id="body" cols="80" rows="10"></textarea> --}}
 
                 </div>
                 <div class="form-group">

@@ -193,6 +193,34 @@ return [
 
             ],
         ],
+        [
+            'text'    => 'Projects',
+            'icon'    => 'file-archive-o',
+            'submenu' => [
+                [
+                    'text' => 'Create a new project',
+                    'url'  => '/projects_creation',
+                ],
+                [
+                    'text'    => 'See projects',
+                    'url'     => '/projects',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Services',
+            'icon'    => 'file-archive-o',
+            'submenu' => [
+                [
+                    'text' => 'Create a new service',
+                    'url'  => '/services_creation',
+                ],
+                [
+                    'text'    => 'See services',
+                    'url'     => '/services',
+                ],
+            ],
+        ],
 
         'LABELS',
         [

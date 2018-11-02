@@ -78,4 +78,18 @@ Route::get('/icon/edit/{id}', 'IconController@edit');
 Route::post('/icon/update/{id}', 'IconController@update');
 Route::delete('/icon/delete/{id}', 'IconController@destroy');
 
+Route::get('/projects_creation', 'ProjectController@index');
+Route::get('/projects', 'ProjectController@indexDeux');
+Route::post('/project/create', 'ProjectController@create');
+Route::get('/project/edit/{id}', 'ProjectController@edit');
+Route::post('/project/update/{id}', 'ProjectController@update');
+Route::post('/project/delete/{id}', 'ProjectController@archive');
+
+Route::get('/services_creation', 'ServiceController@index');
+Route::post('/service/create', 'ServiceController@create');
+Route::get('/services', 'ServiceController@indexDeux');
+Route::get('/service/edit/{id}', 'ServiceController@edit');
+Route::post('/service/delete/{id}', 'ServiceController@delete');
+Route::post('/service/update/{id}', 'ServiceController@update');
+
 Route::get('/home', 'HomeController@index')->name('home');

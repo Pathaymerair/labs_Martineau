@@ -24,20 +24,11 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with('user')->get();
-        
-        // dd($posts);
-        // $posts = User::find('user_id')->posts;
-        // $posts = $user->posts;
-        // $posts = User::find($id)->users()->get();
-        // $posts = User::find(1);
-        // $user = User::all();
+
         $posts = Post::all();
         $categories = Categorie::all();
         $tags = Tag::all();
-        // $post = Post::find(1);
-        // $users = Post::find(1)->users;
-        // $users = User::find(1)->get();
-        // $user = User::find($id);
+
         return view('pages.posts', compact('posts', 'users', 'categories', 'tags'));
     }
 

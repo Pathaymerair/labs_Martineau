@@ -34,16 +34,16 @@
   
 
 			<div class="row">
+                <div class="col-4 ">
 					@foreach ($icons as $icon)
-					
-					<div class="col-4 ">
-							<div class="icon-box">
-								<div class="icon">
-                                    <i class="{{$icon->svg}}"></i>
-                                    
-								</div>
-			
+                    <div class="col-xs-4">
+                            <div class="icon-box">
+                                <div class="icon">
+                                    <i class="{{$icon->svg}}"></i> 
+                                </div>
                             </div>
+
+                        </div>
                             <form action="/icon/edit/{{$icon->id}}" method="GET">
                                 @csrf
                                 <button class="btn- btn-warning">Edit</button>
