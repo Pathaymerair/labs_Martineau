@@ -136,7 +136,17 @@ return [
             'text' => 'Icons',
             'url'  => '/icons',
             'icon' => 'fonticons',
-        ],       
+        ],   
+        [
+            'text' => 'Clients',
+            'url'  => '/clients',
+            'icon' => 'users',
+        ],     
+        [
+            'text' => 'Témoignages',
+            'url'  => '/testimonials',
+            'icon' => 'commenting',
+        ], 
         [
             'text'    => 'Manage site content',
             'icon'    => 'sitemap',

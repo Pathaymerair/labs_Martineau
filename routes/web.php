@@ -92,4 +92,16 @@ Route::get('/service/edit/{id}', 'ServiceController@edit');
 Route::post('/service/delete/{id}', 'ServiceController@delete');
 Route::post('/service/update/{id}', 'ServiceController@update');
 
+Route::get('/clients', 'ClientController@index');
+Route::post('/client/create', 'ClientController@create');
+Route::get('/client/edit/{id}', 'ClientController@edit');
+Route::post('/client/update/{id}', 'ClientController@update');
+Route::delete('/client/delete/{id}', 'ClientController@destroy');
+
+Route::get('/testimonials', 'TestimonialController@index');
+Route::post('/testimonial/create', 'TestimonialController@create');
+Route::get('/testimonial/edit/{id}', 'TestimonialController@edit');
+Route::post('/testimonial/update/{id}', 'TestimonialController@update');
+Route::delete('/testimonial/delete/{id}', 'TestimonialController@destroy');
+
 Route::get('/home', 'HomeController@index')->name('home');
