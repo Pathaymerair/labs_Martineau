@@ -254,15 +254,17 @@
 	<!-- Footer section -->
 	<footer class="footer-section">
 		<h2>{{$titles[0]->copyright}} <a href="https://colorlib.com" target="_blank">{{$titles[0]->copyrightName}}</a></h2>
+        <div class="container">
+                <div class="form-group">
+                        <label for="copyright">copyright</label>
+                        <input type="text" id='copyright' name='copyright' class='form-control' value="{{$titles[0]->copyright}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="copyrightName">copyrightName</label>
+                        <input type="text" id='copyrightName' name='copyrightName' class='form-control' value="{{$titles[0]->copyrightName}}">
+                    </div>
+        </div>
     </footer>
-    <div class="form-group">
-        <label for="copyright">copyright</label>
-        <input type="text" id='copyright' name='copyright' class='form-control' value="{{$titles[0]->copyright}}">
-    </div>
-    <div class="form-group">
-        <label for="copyrightName">copyrightName</label>
-        <input type="text" id='copyrightName' name='copyrightName' class='form-control' value="{{$titles[0]->copyrightName}}">
-    </div>
 	<!-- Footer section end -->
 
 

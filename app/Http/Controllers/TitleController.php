@@ -17,6 +17,7 @@ use App\Tag;
 use App\Categorie;
 use App\Post;
 use App\Comment;
+
 use Mapper;
 use App\Http\Requests\EditHomeRequest;
 use App\Http\Requests\EditServicesRequest;
@@ -232,7 +233,7 @@ class TitleController extends Controller
         if ($search != ' '){
             $post = Post::where('titre', 'like', '%'.$search.'%')
                     ->orWhere('body', 'like', '%'.$search.'%')
-                    ->paginate(3)
+                    ->paginate()
                     ;
                 if (count($post) > 0){
                     return view('/test')->withDetails($post)->withQuery($search);
@@ -244,9 +245,47 @@ class TitleController extends Controller
     public function post($id){
         $titles = Title::find(1);
         $post = Post::with('user', 'comment', 'tag', 'categorie')->find($id);
+        $imageUsers = ImageUser::all();
+        $instas = Instagram::all();
+        $instas = $instas->random(6);
+        $categories = Categorie::orderBy('nameCatego')->get();
+        $tags = Tag::orderBy('nameTag')->get();  
+        
         
 
-        return view('post', compact('titles', 'instas', 'categories', 'tags', 'post', 'comment'));
+        return view('blogPost', compact('titles', 'instas', 'categories', 'tags', 'post', 'comment'));
+    }
+
+    public function searchTag(Request $request){
+        $search = $request->searchTag;
+        $tag = Tag::where('nameTag', 'like', $search)->first();
+        $posts = Post::all();
+        $postArray = collect([]);
+        foreach($posts as $post){
+            if ($post->tag->contains($tag)){
+                $postArray->push($post);
+            }
+        }   
+        if ($postArray->isEmpty()){
+            return redirect('blog')->with('ded', 'No post found !');
+        }
+        return view('/test')->withDetails($postArray)->withQuery($search);
+    }
+
+    public function searchCategorie(Request $request){
+        $search = $request->searchCategorie;
+        $categorie = Categorie::where('nameCatego', 'like', $search)->first();
+        $posts = Post::all();
+        $postArray = collect([]);
+        foreach($posts as $post){
+            if ($post->categorie->contains($categorie)){
+                $postArray->push($post);
+            }
+        }   
+        if ($postArray->isEmpty()){
+            return redirect('blog')->with('ded', 'No post found !');
+        }
+        return view('/test')->withDetails($postArray)->withQuery($search);
     }
 
 }

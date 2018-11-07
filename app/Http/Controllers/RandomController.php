@@ -7,7 +7,8 @@ use App\Random;
 use ImageIntervention;
 use App\Http\Requests\RandomRequest;
 use softDeletes;
-
+use Storage;
+use App\Comment;
 class RandomController extends Controller
 {
     /**
@@ -104,8 +105,12 @@ class RandomController extends Controller
      */
     public function destroy($id)
     {
+        // $comment = Comment::with('random')->get();
         $random = Random::find($id);
+        // dd($random->comment->random);
+    
         $random->delete();
+        // Storage::delete(['img/randoms/thumb/'.$random->randomThumb, 'img/randoms/nm/'.$random->random]);
         return redirect()->back()->with('ded', 'image deleted !');
     }
 }

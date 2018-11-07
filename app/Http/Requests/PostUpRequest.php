@@ -24,8 +24,7 @@ class PostUpRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required',
-            'month' => 'required',
+
             'titre' => 'required',
             'body' => 'required',
             'image' => 'nullable',

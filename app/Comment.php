@@ -15,4 +15,7 @@ class Comment extends Model
     public function Post(){
         return $this->belongsTo('App\Post');
     }
+    public function Random(){
+        return $this->belongsTo('App\Random');
+    }
 }

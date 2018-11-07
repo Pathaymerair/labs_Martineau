@@ -67,7 +67,19 @@
                     <ul>
                         @foreach ($categories as $cate)
                             @if ($cate->state_id == 2)
-                        <li><a href="#">{{$cate->nameCatego}}</a></li>
+                        <li><form action="/categorie/search" method="GET">
+                            @csrf
+                            <input type="hidden" value='{{$cate->nameCatego}}' name='searchCategorie'>
+                                    <a onclick="event.target.parentElement.submit();" style="cursor: pointer;">
+                                            {{$cate->nameCatego}}
+                            </a>
+                            </form>
+                            
+                            
+                            {{-- <a href="#">{{$cate->nameCatego}}</a> --}}
+                        
+                        
+                        </li>
                             @endif
                         @endforeach
 
@@ -89,7 +101,16 @@
                     <ul class="tag">
                         @foreach ($tags as $tag)
                             @if ($tag->state_id == 2)
-                        <li><a href="">{{$tag->nameTag}}</a></li>
+                            <li>
+                                <form action="/tag/search" method="GET">
+                                    @csrf
+                                    <input type="hidden" value='{{$tag->nameTag}}' name='searchTag'>
+                                            <a onclick="event.target.parentElement.submit();" style="cursor: pointer;">
+                                        {{$tag->nameTag}}
+                                    </a>
+                                    </form>
+                            </li>
+                        {{-- <li><a href="/tag/search" name='searchTag' value='{{$tag->nameTag}}'>{{$tag->nameTag}}</a></li> --}}
                         @endif
                         @endforeach
 

@@ -65,7 +65,8 @@
                         @foreach ($categories as $categorie)
                         @if ($categorie->state_id == 2)
                             <label class="checkbox-inline">
-                              <input type="checkbox" name='categorie_id[]' id='categorie_id' value='{{$categorie->id}}' >
+<input type="checkbox" name='categorie_id[]' id='categorie_id' value='{{$categorie->id}}' @foreach($post->categorie as $cate)
+{{$categorie->id == $cate->id ? 'checked' : ''}} @endforeach   >
                               {{$categorie->nameCatego}}
                             </label>
                             @endif
@@ -76,7 +77,8 @@
                                 @foreach ($tags as $tag)
                                 @if ($tag->state_id == 2)
                                     <label class="checkbox-inline">
-                                      <input type="checkbox" name='tag_id[]' id='tag_id' value='{{$tag->id}}' >
+                                      <input type="checkbox" name='tag_id[]' id='tag_id' value='{{$tag->id}}' @foreach($post->tag as $cate)
+                                      {{$tag->id == $cate->id ? 'checked' : ''}} @endforeach   >
                                       # {{$tag->nameTag}}
                                     </label>
                                     @endif
@@ -88,7 +90,7 @@
                     <label for="state_id">Etat</label>
                     <select name="state_id" id="state_id">
                         @foreach ($states as $state)
-                            <option value="{{$state->id}}" >{{$state->etat}}</option>
+                            <option value="{{$state->id}}" {{$post->state_id == $state->id ? 'selected' : ''}}>{{$state->etat}}</option>
                         @endforeach
                     </select>
                 </div>

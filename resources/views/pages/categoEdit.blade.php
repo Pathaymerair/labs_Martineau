@@ -31,7 +31,7 @@
                 <label for="state_id">Etat</label>
                 <select name="state_id" id="state_id">
                     @foreach ($states as $state)
-                        <option value="{{$state->id}}">{{$state->etat}}</option>
+                        <option value="{{$state->id}}" {{$categorie->state_id == $state->id ? 'selected' : ''}}>{{$state->etat}}</option>
                     @endforeach
                 </select>
             </div>

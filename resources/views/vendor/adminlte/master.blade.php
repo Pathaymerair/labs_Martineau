@@ -44,13 +44,13 @@
 
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-<link rel="stylesheet" href="css/bootstrap.min.css"/>
-<link rel="stylesheet" href="css/font-awesome.min.css"/>
-<link rel="stylesheet" href="css/flaticon.css"/>
-<link rel="stylesheet" href="css/magnific-popup.css"/>
-<link rel="stylesheet" href="css/owl.carousel.css"/>
-<link rel="stylesheet" href="css/style.css"/>
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/css/flaticon.css"/>
+    <link rel="stylesheet" href="/css/magnific-popup.css"/>
+    <link rel="stylesheet" href="/css/owl.carousel.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body class="hold-transition @yield('body_class')">
 

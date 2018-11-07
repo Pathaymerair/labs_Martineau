@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                                 <label>
-                                    <input type="radio" name="icon_id" id="icon_id" value="{{$icon->id}}" checked="">
+                                    <input type="radio" name="icon_id" id="icon_id" value="{{$icon->id}}">
                                 </label>
                             </div>
                         @endforeach

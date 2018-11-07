@@ -30,7 +30,7 @@ class CommentController extends Controller
         $comment->post_id = $post->id;
         
         $comment->save();
-        return redirect()->back()->with('success', 'Comment Uploaded !');
+        return redirect()->back()->with('success', 'Comment Uploaded ! Now waiting for approval !');
 
 
     }
@@ -65,5 +65,30 @@ class CommentController extends Controller
         $comment->state_id = $request->state_id;
         $comment->save();
         return redirect('/comments')->with('success', 'Comment updated !');
+    }
+
+    public function answer($id){
+    $comment = Comment::find($id);
+    return view('pages.commentAnswer', compact('comment'));
+    // $com = new Comment;
+    // $com->post_id = $comment->post_id;
+    }
+
+    public function comAnswer(Request $request, $id){
+        $comment = Comment::find($id);
+        $com = new Comment;
+        $com->post_id = $comment->post_id;
+        $com->name = $request->name;
+        $com->email = $request->email;
+        $com->subject = $request->subject;
+        $com->msg = $request->msg;
+        if (Auth::User()){
+            $com->user_id = Auth::User()->id;
+        }
+        $com->random_id = Random::inRandomOrder()->first()->id;
+
+        
+        $com->save();
+        return redirect('/comments')->with('success', 'Answer created! Waiting for approval !');
     }
 }

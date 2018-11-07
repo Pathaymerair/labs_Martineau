@@ -5,12 +5,13 @@
 @if (isset($details))
 
 <p> Les résultats pour votre recherche <b> {{$query}} </b> : </p>
-
+<ul>
 @foreach ($details as $post)
-<a href="/post/{{$post->id}}">{{$post->titre}}</a>
+<li><a href="/post/{{$post->id}}">{{$post->titre}}</a></li>
    
 @endforeach
-
-{{$details->links()}}
+</ul>
+{{-- 
+{{$details->links()}} --}}
 
 @endif

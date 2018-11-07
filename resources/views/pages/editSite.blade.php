@@ -23,10 +23,10 @@
 
 <form action="/updateSite/{{$titles[0]->id}}" method="POST">
 @csrf
-
+{{-- 
 <div class="hero-section">
     <div class="hero-content">
-        <div class="hero-center">
+        <div class="hero-center"> --}}
             <img src="img/big-logo.png" alt="">
       
             <p>{{$titles[0]->slogan}}</p>
@@ -34,15 +34,15 @@
                 <label for="slogan">Slogan</label>
                 <input type="text" id='slogan' name='slogan' class='form-control' value="{{$titles[0]->slogan}}">
             </div>
-    
+{{--     
         </div>
     </div>
     <!-- slider -->
-</div>
+</div> --}}
 
 
-<div class="about-contant">
-    <div class="container">
+{{-- <div class="about-contant">
+    <div class="container"> --}}
         <div class="section-title">
             <h2> {{$titles[0]->introSlogan}} <span>{{$titles[0]->overIntroSlogan}}</span> {{$titles[0]->introSloganDeux}}</h2>
             <div class="form-group">
@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 text-dark">
                 <p>{{$titles[0]->introUn}}</p>
             </div>
             <div class="col-md-6">
@@ -81,25 +81,25 @@
             </div>
         </div>
         <div class="text-center mt60">
-            <a href="" class="site-btn">{{$titles[0]->introButton}}</a>
+            <a href="" class="">{{$titles[0]->introButton}}</a>
         </div>
         <div class="form-group">
             <label for="introButton">introButton</label>
             <input type="text" id='introButton' name='introButton' class='form-control' value="{{$titles[0]->introButton}}">
         </div>
         <!-- popup video -->
-        <div class="intro-video">
+        {{-- <div class="intro-video"> --}}
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    {{-- <img src="img/video.jpg" alt="">
+                    <img src="img/video.jpg" alt="">
                     <a href="{{$titles[0]->youtubeLink}}" class="video-popup">
                         <i class="fa fa-play"></i>
-                    </a> --}}
+                    </a>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        {{-- </div> --}}
+    {{-- </div>
+</div> --}}
                 <div class="form-group">
                     <label for="youtubeLink">youtubeLink</label>
                     <input type="text" id='youtubeLink' name='youtubeLink' class='form-control' value="{{$titles[0]->youtubeLink}}">
@@ -135,19 +135,19 @@
             <h2>{{$titles[0]->servicesTitle}} <span>{{$titles[0]->overServicesTitle}}</span> {{$titles[0]->servicesTitleDeux}}</h2>
         </div>
         <div class="form-group">
-            <label for="servicesTitle">servicesTitle</label>
+            <label for="servicesTitle" class='text-white'>servicesTitle</label>
             <input type="text" id='servicesTitle' name='servicesTitle' class='form-control' value="{{$titles[0]->servicesTitle}}">
         </div>
         <div class="form-group">
-            <label for="overServicesTitle">overServicesTitle</label>
+            <label for="overServicesTitle" class='text-white'>overServicesTitle</label>
             <input type="text" id='overServicesTitle' name='overServicesTitle' class='form-control' value="{{$titles[0]->overServicesTitle}}">
         </div>
         <div class="form-group">
-            <label for="servicesTitleDeux">servicesTitleDeux</label>
+            <label for="servicesTitleDeux" class='text-white'>servicesTitleDeux</label>
             <input type="text" id='servicesTitleDeux' name='servicesTitleDeux' class='form-control' value="{{$titles[0]->servicesTitleDeux}}">
         </div>
         <div class="text-center">
-            <a href="" class="site-btn">{{$titles[0]->servicesButton}}</a>
+            <a href="" class="">{{$titles[0]->servicesButton}}</a>
         </div>
         <div class="form-group">
             <label for="servicesButton">servicesButton</label>
@@ -181,6 +181,7 @@
     </div>
 </div>
 <!-- Team Section end-->
+
 
 
 
@@ -312,21 +313,24 @@
 
 	<!-- Footer section -->
 	<footer class="footer-section">
-		<h2>{{$titles[0]->copyright}} <a href="https://colorlib.com" target="_blank">{{$titles[0]->copyrightName}}</a></h2>
+		<div class="container">
+                <h2>{{$titles[0]->copyright}} <a href="https://colorlib.com" target="_blank">{{$titles[0]->copyrightName}}</a></h2>
+                <div class="form-group">
+                    <label for="copyright">copyright</label>
+                    <input type="text" id='copyright' name='copyright' class='form-control' value="{{$titles[0]->copyright}}">
+                </div>
+                <div class="form-group">
+                    <label for="copyrightName">copyrightName</label>
+                    <input type="text" id='copyrightName' name='copyrightName' class='form-control' value="{{$titles[0]->copyrightName}}">
+                </div>
+                <button class="btn btn-info">Submit changes</button>
+        </div>
     </footer>
-    <div class="form-group">
-        <label for="copyright">copyright</label>
-        <input type="text" id='copyright' name='copyright' class='form-control' value="{{$titles[0]->copyright}}">
-    </div>
-    <div class="form-group">
-        <label for="copyrightName">copyrightName</label>
-        <input type="text" id='copyrightName' name='copyrightName' class='form-control' value="{{$titles[0]->copyrightName}}">
-    </div>
 	<!-- Footer section end -->
 
 
 
-<button class="btn btn-info">Submit changes</button>
+
 
 </form>
 

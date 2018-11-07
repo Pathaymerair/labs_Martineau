@@ -31,6 +31,7 @@
                 <th scope="col">Post</th>
                 <th scope="col">Auteur</th>
                 <th scope="col">State</th>
+                <th scope="col">Répondre</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
 
@@ -46,7 +47,7 @@
                   <td><a href="/post/{{$comment->post->id}}">{{$comment->post->titre}}</a></td>
                   <td>{{$comment->user->name}}</td>
                   <td>{{$comment->state->etat}}</td>
-
+                  <td> <a href="/comment/answer/{{$comment->id}}"> Répondre </a></td>
                   <td>
                       <form action="/comment/{{$comment->id}}/edit" method="GET">
                           @csrf

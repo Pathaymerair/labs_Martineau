@@ -10,6 +10,8 @@ use App\User;
 use App\Role;
 use App\Profil;
 use App\ImageUser;
+use App\Post;
+use App\Comment;
 use ImageIntervention;
 
 class UserController extends Controller
@@ -110,10 +112,22 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $imageUser = ImageUser::all();
         $user = User::find($id);
         if($user->profil){
             $user->profil->delete();
-            Storage::delete(['img/team/thumb/'.$user->imageUser->imageUserThumbnail, 'img/team/imgnm/'.$user->imageUser->imageUser]);
+            if ($user->imageUser){
+                Storage::delete(['img/team/thumb/'.$user->imageUser->imageUserThumbnail, 'img/team/imgnm/'.$user->imageUser->imageUser]);
+            }
+        }
+        $post = Post::where('user_id', $user->id)->get();
+     
+        if ($user->post){
+            $user->post->state_id = 3;
+        }
+
+        if ($user->comment){
+            $user->comment->state_id = 3;
         }
         
         

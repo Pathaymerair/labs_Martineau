@@ -16,9 +16,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
 
     <!-- Fonts -->
@@ -38,7 +35,9 @@
 	<link rel="stylesheet" href="css/flaticon.css"/>
 	<link rel="stylesheet" href="css/magnific-popup.css"/>
 	<link rel="stylesheet" href="css/owl.carousel.css"/>
-	<link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    
+ 
 
 </head>
 <body>
@@ -69,5 +68,8 @@
 
 
 
+    <!-- Scripts -->
+    
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

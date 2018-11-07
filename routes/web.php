@@ -24,17 +24,19 @@ Route::post('/updateServicePage/{id}', 'TitleController@updateService')->middlew
 Route::post('/updateBlogPage/{id}', 'TitleController@updateBlog')->middleware('can:superadmin');
 Route::post('/updateContactPage/{id}', 'TitleController@updateContact')->middleware('can:superadmin');
 Route::post('/search', 'TitleController@search');
+Route::get('/tag/search', 'TitleController@searchTag');
+Route::get('/categorie/search', 'TitleController@searchCategorie');
 
 
-Route::get('/users', 'UserController@index');
+Route::get('/users', 'UserController@index')->middleware('can:superadmin');
 Route::post('/user/create', 'UserController@store')->middleware('can:superadmin');
-Route::get('/user/edit/{id}', 'UserController@edit');
-Route::post('/user/update/{id}', 'UserController@update');
+Route::get('/user/edit/{id}', 'UserController@edit')->middleware('can:superadmin');
+Route::post('/user/update/{id}', 'UserController@update')->middleware('can:superadmin');
 Route::delete('/user/delete/{id}', 'UserController@destroy')->middleware('can:superadmin');
 
-Route::get('profil/{id}', 'ProfilController@index');
-Route::get('/profil/edit/{id}', 'ProfilController@edit');
-Route::post('/profil/update/{id}', 'ProfilController@update');
+Route::get('profil/{id}', 'ProfilController@index')->middleware('can:superadmin');
+Route::get('/profil/edit/{id}', 'ProfilController@edit')->middleware('can:superadmin');
+Route::post('/profil/update/{id}', 'ProfilController@update')->middleware('can:superadmin');
 
 Route::get('/roles', 'RoleController@index')->middleware('can:superadmin');
 Route::post('/roles/create', 'RoleController@store')->middleware('can:superadmin');
@@ -49,29 +51,33 @@ Route::delete('/delete/random/{id}', 'RandomController@destroy')->middleware('ca
 Auth::routes();
 
 
-Route::get('/posts', 'PostController@index');
-Route::post('/posts/create', 'PostController@store');
-Route::get('/post/edit/{id}', 'PostController@edit');
-Route::post('/posts/update/{id}', 'PostController@update');
-Route::delete('/post/delete/{id}', 'PostController@destroy');
+Route::get('/posts', 'PostController@index')->middleware('can:admin');
+Route::get('/post/{id}', 'TitleController@post')->middleware('can:admin');
+Route::post('/posts/create', 'PostController@store')->middleware('can:admin');
+Route::get('/post/edit/{id}', 'PostController@edit')->middleware('can:admin');
+Route::post('/posts/update/{id}', 'PostController@update')->middleware('can:admin');
+Route::delete('/post/delete/{id}', 'PostController@destroy')->middleware('can:admin');
 
-Route::get('/comments', 'CommentController@index');
-Route::get('/comment/{id}/edit', 'CommentController@edit');
-Route::post('/comment/create/{id}', 'CommentController@create');
-Route::post('/comment/{id}', 'CommentController@update');
-Route::delete('/comment/delete/{id}', 'CommentController@destroy');
+Route::get('/comments', 'CommentController@index')->middleware('can:admin');
+Route::get('/comment/{id}/edit', 'CommentController@edit')->middleware('can:admin');
+Route::post('/comment/create/{id}', 'CommentController@create')->middleware('can:admin');
+Route::post('/comment/{id}', 'CommentController@update')->middleware('can:admin');
+Route::delete('/comment/delete/{id}', 'CommentController@destroy')->middleware('can:admin');
+Route::get('/comment/answer/{id}', 'CommentController@answer')->middleware('can:admin');
+Route::post('/comment/answer/create/{id}', 'CommentController@comAnswer')->middleware('can:admin');
 
-Route::get('/categories', 'CategorieController@index');
-Route::post('/categorie/create', 'CategorieController@create');
-Route::get('/categorie/edit/{id}', 'CategorieController@edit');
-Route::post('/categorie/update/{id}', 'CategorieController@update');
-Route::delete('/categorie/delete/{id}', 'CategorieController@destroy');
+Route::get('/categories', 'CategorieController@index')->middleware('can:admin');
+Route::post('/categorie/create', 'CategorieController@create')->middleware('can:admin');
+Route::get('/categorie/edit/{id}', 'CategorieController@edit')->middleware('can:admin');
+Route::post('/categorie/update/{id}', 'CategorieController@update')->middleware('can:admin');
+Route::delete('/categorie/delete/{id}', 'CategorieController@destroy')->middleware('can:admin');
 
-Route::get('/tags', 'TagController@index');
-Route::post('/tag/create', 'TagController@create');
-Route::get('/tag/edit/{id}', 'TagController@edit');
-Route::post('/tag/update/{id}', 'TagController@update');
-Route::delete('/tag/delete/{id}', 'TagController@destroy');
+Route::get('/tags', 'TagController@index')->middleware('can:admin');
+Route::post('/tag/create', 'TagController@create')->middleware('can:admin');
+Route::get('/tag/edit/{id}', 'TagController@edit')->middleware('can:admin');
+Route::post('/tag/update/{id}', 'TagController@update')->middleware('can:admin');
+Route::delete('/tag/delete/{id}', 'TagController@destroy')->middleware('can:admin');
+
 
 Route::get('/icons', 'IconController@index')->middleware('can:superadmin');
 Route::post('/icon/create', 'IconController@create')->middleware('can:superadmin');

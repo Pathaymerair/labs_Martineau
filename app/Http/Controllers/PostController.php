@@ -106,6 +106,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+   
         $states = State::all();
         $categories = Categorie::all();
         $tags = Tag::all();
@@ -123,6 +124,7 @@ class PostController extends Controller
     public function update(PostUpRequest $request, $id)
     {
         $post = Post::find($id);
+        
         if ($request->file('image')){
 
             $images= $request->file('image');
@@ -173,4 +175,6 @@ class PostController extends Controller
         $post->save();
         return redirect()->back()->with('success', 'Post deleted !');
     }
+
+    
 }

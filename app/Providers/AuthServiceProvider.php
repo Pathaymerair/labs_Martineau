@@ -33,7 +33,7 @@ class AuthServiceProvider extends ServiceProvider
         });
         Gate::define('admin', function ($user) {
            
-            return $user->role_id > 3;
+            return $user->role_id < 3;
         });
         Gate::define('post', function($user, $post){
             return $user->role_id == 1 || $user->id == $post->user_id;

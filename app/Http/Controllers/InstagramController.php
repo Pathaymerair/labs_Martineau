@@ -7,6 +7,7 @@ use App\Instagram;
 use App\Http\Requests\InstaRequest;
 use ImageIntervention;
 use App\State;
+use Storage;
 
 class InstagramController extends Controller
 {
