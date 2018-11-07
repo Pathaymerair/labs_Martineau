@@ -19,6 +19,7 @@
 <div class="container">
     <div class="row">
         @foreach ($services as $service)
+        @if ($service->state_id < 3)
             <div class="col-xs-4">
                 <div class="sv-card">
                         <div class="card-img">
@@ -48,6 +49,7 @@
                 
 
             </div>
+            @endif
         @endforeach
     </div>
 </div>

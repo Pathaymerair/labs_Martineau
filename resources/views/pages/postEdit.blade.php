@@ -38,16 +38,6 @@
                             <label for="image">Image Article</label>
                             <input type="file" id="image" name='image'>
                     </div>
-                <div class="post-date">
-                    <div class="form-group">
-                        <label for="date">Day</label>
-                        <input type="number" min="1" max="31" id="date" name='date' value='{{$post->date}}'>
-                </div>
-                <div class="form-group">
-                    <label for="month">Mois</label>
-                    <input type="month" id="month" name='month' value='{{$post->month}}'>
-            </div>
-                </div>
             </div>
             <div class="post-content">
            
@@ -67,17 +57,38 @@
                             CKEDITOR.replace( 'body' );
                         </script> 
                         </div>
-                  
-                          
-                    {{-- <label for="body">Contenu Article</label>
-                    <textarea name="body" id="body" cols="80" rows="10"></textarea> --}}
 
             </div>
             <div class="form-group">
+                    <div class="checkbox">
+                        <h5>Catégories</h5>
+                        @foreach ($categories as $categorie)
+                        @if ($categorie->state_id == 2)
+                            <label class="checkbox-inline">
+                              <input type="checkbox" name='categorie_id[]' id='categorie_id' value='{{$categorie->id}}' >
+                              {{$categorie->nameCatego}}
+                            </label>
+                            @endif
+                              @endforeach
+                        </div>
+                        <div class="checkbox">
+                            <h5>Tags</h5>
+                                @foreach ($tags as $tag)
+                                @if ($tag->state_id == 2)
+                                    <label class="checkbox-inline">
+                                      <input type="checkbox" name='tag_id[]' id='tag_id' value='{{$tag->id}}' >
+                                      # {{$tag->nameTag}}
+                                    </label>
+                                    @endif
+                                @endforeach
+                        </div>
+
+                  </div>
+            <div class="form-group mt-5">
                     <label for="state_id">Etat</label>
                     <select name="state_id" id="state_id">
                         @foreach ($states as $state)
-                            <option value="{{$state->id}}">{{$state->etat}}</option>
+                            <option value="{{$state->id}}" >{{$state->etat}}</option>
                         @endforeach
                     </select>
                 </div>

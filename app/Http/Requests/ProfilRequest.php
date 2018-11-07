@@ -25,7 +25,7 @@ class ProfilRequest extends FormRequest
     {
         return [
             'profilLastName' => 'nullable',
-            'profilFirstName' => 'nullable',
+            'profilFirstname' => 'nullable',
             'profildesc' => 'nullable',
             'profilJob' => 'nullable',
         ];

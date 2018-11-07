@@ -15,7 +15,9 @@
                 <th scope="col">Name</th>
                 <th scope="col">Role</th>
                 <th scope="col">Profil</th>
+                @can('superadmin')
                 <th scope="col">Edit</th>
+                @endcan
                 <th scope="col">Delete</th>
               </tr>
             </thead>
@@ -30,7 +32,7 @@
                       <img src="img/team/thumb/{{$user->imageUser->imageUserThumbnail}}" alt="">
                       @endif
                 </td>
-                {{-- <td><img src="{{Storage::url($user->imageUser)}}" alt=""></td> --}}
+     
                   <td>{{$user->name}}</td>
                   <td>{{$user->role->roleName}}</td>
                   <td>
@@ -41,12 +43,14 @@
                                 </button>
                         </form>
                   </td>
+                  @can('superadmin')
                   <td>
                       <form action="/user/edit/{{$user->id}}" method="GET">
                     @csrf
                     <button class="btn btn-warning">Edit</button>
                     </form>
                   </td>
+                  @endcan
                   <td>
                       <form action="/user/delete/{{$user->id}}" method="POST">
                         @csrf

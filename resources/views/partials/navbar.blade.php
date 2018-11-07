@@ -12,7 +12,9 @@
             <li><a href="/service">Services</a></li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/home">Home</a></li>
+            @if (Auth::user())
+                <li><a href="/home">Home</a></li>
+                @endif
         </ul>
     </nav>
 </header>

@@ -43,7 +43,7 @@
                 <tr>
                   <th scope="row">{{$post->id}}</th>
 
-                  <td>{{$post->month}} {{$post->date}} </td>
+                  <td>{{$post->created_at->format('d m y')}} </td>
                   <td><a href="/post/{{$post->id}}">{{$post->titre}}</a></td>
                   <td>{{$post->user->name}}</td>
                   <td>{{$post->state->etat}}</td>
@@ -85,16 +85,8 @@
                             <label for="image">Image Article</label>
                             <input type="file" id="image" name='image'>
                     </div>
-                <div class="post-date">
-                        <div class="form-group">
-                                <label for="date">Day</label>
-                                <input type="number" min="1" max="31" id="date" name='date' value='{{ old('date')}}'>
-                        </div>
-                        <div class="form-group">
-                            <label for="month">Mois</label>
-                            <input type="month" id="month" name='month' value='{{ old('month')}}'>
-                    </div>
-                </div>
+
+               
             </div>
             <div class="post-content">
               
@@ -118,19 +110,23 @@
                     <div class="checkbox">
                         <h5>Catégories</h5>
                         @foreach ($categories as $categorie)
+                        @if ($categorie->state_id == 2)
                             <label class="checkbox-inline">
                               <input type="checkbox" name='categorie_id[]' id='categorie_id' value='{{$categorie->id}}'>
                               {{$categorie->nameCatego}}
                             </label>
+                            @endif
                               @endforeach
                         </div>
                         <div class="checkbox">
                             <h5>Tags</h5>
                                 @foreach ($tags as $tag)
+                                @if ($tag->state_id == 2)
                                     <label class="checkbox-inline">
                                       <input type="checkbox" name='tag_id[]' id='tag_id' value='{{$tag->id}}'>
                                       # {{$tag->nameTag}}
                                     </label>
+                                    @endif
                                 @endforeach
                         </div>
 

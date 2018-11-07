@@ -44,8 +44,8 @@ class CommentController extends Controller
 
     public function index(){
         $comments = Comment::all();
-        $comments = Comment::with('user')->get();
-        $comments = Comment::with('post')->get();
+        $comments = Comment::with('user')->orderBy('id', 'desc')->get();
+        $comments = Comment::with('post')->orderBy('id', 'desc')->get();
     
         return view('pages.comment', compact('comments'));
     }

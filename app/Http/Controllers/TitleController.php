@@ -6,7 +6,18 @@ use Illuminate\Http\Request;
 use App\Title;
 use App\Icon;
 use App\Service;
+use App\Project;
+use App\Testimonial;
 use ImageIntervention;
+use App\User;
+use App\ImageUser;
+use App\Role;
+use App\Instagram;
+use App\Tag;
+use App\Categorie;
+use App\Post;
+use App\Comment;
+use Mapper;
 use App\Http\Requests\EditHomeRequest;
 use App\Http\Requests\EditServicesRequest;
 use App\Http\Requests\EditBlogRequest;
@@ -17,24 +28,52 @@ class TitleController extends Controller
     public function index(){
         $titles = Title::all();
         $services = service::with('icon')->get();
-      
-        $services = Service::paginate(9);
-        return view('welcome', compact('titles', 'icons', 'services'));
+        $testimonials = Testimonial::all();
+        $services = Service::Paginate(9);
+        $users = User::all();
+        $roles = Role::all();
+        $imageUsers = ImageUser::all();
+        do {
+            $user = $users->random();
+        } while (!$user->imageUser);
+        do {
+            $userDeux = $users->random();
+        } while (!$userDeux->imageUser && $userDeux != $user);
+        // $userDeux = $users->random();
+        $serviceUn = $services->random();
+        $serviceDeux = $services->random();
+        $serviceTrois = $services->random();
+     
+        return view('welcome', compact('titles', 'icons', 'services', 'testimonials', 'users', 'user', 'imageUser', 'userDeux', 'serviceUn', 'serviceDeux', 'serviceTrois'));
     }
 
     public function indexBlog(){
         $titles = Title::all();
-        return view('blog', compact('titles'));
+        $instas = Instagram::all();
+        $instas = $instas->random(6);
+        $categories = Categorie::orderBy('nameCatego')->get();
+        $tags = Tag::orderBy('nameTag')->get();      
+        $posts = Post::where('state_id',2)->orderBy('id', 'desc')->paginate(3);
+        $comment = Comment::with('post')->where('state_id', 2)->get();
+
+        return view('blog', compact('titles', 'instas', 'categories', 'tags', 'posts', 'comment'));
     }
     public function indexServices(){
         $titles = Title::all();
         $services = service::with('icon')->get();
+        $projects = Project::orderBy('id', 'desc')->take(6)->get();
+        $group = $projects->split(2);
+       
+
+
+        // $projectss = Project::orderBy('id', 'desc')->take(6)->get();
       
         $services = Service::paginate(9);
-        return view('services', compact('titles', 'services'));
+        return view('services', compact('titles', 'services', 'projects', 'group'));
     }
     public function indexContact(){
         $titles = Title::all();
+        Mapper::map(50.8548661, 4.3385079);
         return view('contact', compact('titles'));
     }
     public function edit(){
@@ -187,4 +226,27 @@ class TitleController extends Controller
         return redirect('editContact')->with('success', 'Content updated !');
 
     }
+
+    public function search(Request $request){
+        $search = $request->search;
+        if ($search != ' '){
+            $post = Post::where('titre', 'like', '%'.$search.'%')
+                    ->orWhere('body', 'like', '%'.$search.'%')
+                    ->paginate(3)
+                    ;
+                if (count($post) > 0){
+                    return view('/test')->withDetails($post)->withQuery($search);
+                }
+        }
+        return redirect('blog')->with('ded', 'No post found !');
+    }
+
+    public function post($id){
+        $titles = Title::find(1);
+        $post = Post::with('user', 'comment', 'tag', 'categorie')->find($id);
+        
+
+        return view('post', compact('titles', 'instas', 'categories', 'tags', 'post', 'comment'));
+    }
+
 }

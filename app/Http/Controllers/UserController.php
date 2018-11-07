@@ -113,13 +113,24 @@ class UserController extends Controller
         $user = User::find($id);
         if($user->profil){
             $user->profil->delete();
+            Storage::delete(['img/team/thumb/'.$user->imageUser->imageUserThumbnail, 'img/team/imgnm/'.$user->imageUser->imageUser]);
         }
+        
         
         $user->delete();
         return redirect()->back()->with('ded', 'User removed successfully !');
     }
     public function random(){
-        $user = User::inRandomOrder()->get();
+        $users = User::all();
+        
+        if ($user->imageUser){
+            $user = $user->random()->get();
+        } else {
+            $user = $user->random();
+        }
+        
+    
+       
         return redirect('/');
     }
 }

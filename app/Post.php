@@ -16,6 +16,12 @@ class Post extends Model
     public function Comment(){
         return $this->hasMany('App\Comment');
     }
+    public function commentcount(){
+        return $this->comment->where('state_id', 2);
+        // return $this->comment->count();
+        
+        
+    }
     public function Categorie(){
         return $this->belongsToMany('App\Categorie');
     }

@@ -6,15 +6,13 @@
  */
 
 require('./bootstrap');
-require('./bootstrap.min');
-require('./circle-progress.min');
-require('./jquery-2.1.4.min');
-require('./magnific-popup.min');
-require('./main');
-require('./map');
-require('./owl.carousel.min');
-
-window.Vue = require('vue');
+require('../../public/js/jquery-2.1.4.min')
+require('../../public/js/owl.carousel.min')
+require('../../public/js/magnific-popup.min')
+require('../../public/js/bootstrap.min')
+require('../../public/js/circle-progress.min')
+// require('../../public/js/map')
+require('../../public/js/main')
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -22,8 +20,3 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-const app = new Vue({
-    el: '#app'
-});

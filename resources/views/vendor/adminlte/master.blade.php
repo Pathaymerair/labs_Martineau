@@ -43,14 +43,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-
+    <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-<link rel="stylesheet" href="{{ asset('css/style.css')}}" >
-<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}"/>
-<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}"/>
-<link rel="stylesheet" href="{{ asset('css/flaticon.css')}}"/>
-<link rel="stylesheet" href="{{ asset('css/magnific-popup.css')}}"/>
-<link rel="stylesheet" href="{{ asset('css/owl.carousel.css')}}"/>
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="stylesheet" href="css/flaticon.css"/>
+<link rel="stylesheet" href="css/magnific-popup.css"/>
+<link rel="stylesheet" href="css/owl.carousel.css"/>
+<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body class="hold-transition @yield('body_class')">
 
@@ -78,5 +78,12 @@
 
 @yield('adminlte_js')
 
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/magnific-popup.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/circle-progress.min.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

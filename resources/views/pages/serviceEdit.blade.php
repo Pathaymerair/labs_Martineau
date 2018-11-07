@@ -17,8 +17,8 @@
     @endif
 
 <div class="container">
-    <h1>Create service</h1>
-    <form action="/service/create" method="POST" enctype="multipart/form-data">
+    <h1>Edit service</h1>
+    <form action="/service/update/{{$service->id}}" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="form-group">
             <label for="serviceTitre"> Titre
@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
                                 <label>
-                                    <input type="radio" name="icon_id" id="icon_id" value="{{$icon->id}}" checked="">
+                                    <input type="radio" name="icon_id" id="icon_id" value="{{$icon->id}}">
                                 </label>
                             </div>
                         @endforeach

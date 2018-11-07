@@ -44,7 +44,7 @@
         <div class="row">
                 @foreach ($randoms as $random)
               
-                    <div class="row">
+                    <div class="col-xs-4">
                             <img src="img/randoms/thumb/{{$random->randomThumb}}" alt="">
               
                             <form action="/delete/random/{{$random->id}}" method="POST">

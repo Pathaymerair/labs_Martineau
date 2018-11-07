@@ -32,10 +32,10 @@
 
     <h1>Icons Collection</h1>
   
-
+    @foreach ($icons->chunk(3) as $chunk)
 			<div class="row">
-                <div class="col-4 ">
-					@foreach ($icons as $icon)
+             
+					@foreach ($chunk as $icon)
                     <div class="col-xs-4">
                             <div class="icon-box">
                                 <div class="icon">
@@ -43,19 +43,20 @@
                                 </div>
                             </div>
 
-                        </div>
                             <form action="/icon/edit/{{$icon->id}}" method="GET">
                                 @csrf
-                                <button class="btn- btn-warning">Edit</button>
+                                <button class="btn btn-warning">Edit</button>
                             </form>
                             <form action="/icon/delete/{{$icon->id}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger">Delete</button>
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger">Delete</button>
                             </form>
+                        </div>
 					@endforeach
-			</div>
-		</div>
+			
+        </div>
+        @endforeach
 </div>
 
 

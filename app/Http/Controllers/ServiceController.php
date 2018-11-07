@@ -43,7 +43,7 @@ class ServiceController extends Controller
         $service->serviceTitre = $request->serviceTitre;
         $service->serviceDesc = $request->serviceDesc;
         $service->icon_id = $request->icon_id;
-        $service->state_id = $request->state_id;
+        $service->state_id = 2;
         $service->save();
         return redirect('/services')->with('success', 'service updated!');
         }

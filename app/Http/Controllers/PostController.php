@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\PostUpRequest;
 use App\Post;
 use App\User;
 use App\Title;
@@ -11,7 +12,9 @@ use App\Comment;
 use App\ImageUser;
 use App\Categorie;
 use App\Tag;
+use App\State;
 use Auth;
+use App\Instagram;
 use ImageIntervention;
 
 class PostController extends Controller
@@ -25,7 +28,8 @@ class PostController extends Controller
     {
         $posts = Post::with('user')->get();
 
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->get();
+    
         $categories = Categorie::all();
         $tags = Tag::all();
 
@@ -69,8 +73,8 @@ class PostController extends Controller
         }
         $post->user_id = Auth::User()->id;
 
-        $post->date = $request->date;
-        $post->month = $request->month;
+       
+       
         $post->titre = $request->titre;
         $post->body = $request->body;
      
@@ -91,23 +95,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $post = Post::find($id);
-        
-        $titles = Title::all();
-        $imageUsers = ImageUser::all();
-        $comments = Comment::with('post')->get();
-        // $categories = Categorie::with('post')->get();
-        $categories = $post->categorie()->orderBy('id')->get();
-        $tags = $post->tag()->orderBy('id')->get();
-        $user = $post->user()->get();
-      
 
-      
-  
-        return view('blogPost', compact('post', 'titles', 'comments', 'imagesUsers', 'categories', 'tags', 'user'));
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -118,7 +106,11 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        return view('pages.postEdit', compact('post'));
+        $states = State::all();
+        $categories = Categorie::all();
+        $tags = Tag::all();
+     
+        return view('pages.postEdit', compact('post', 'states', 'categories', 'tags'));
     }
 
     /**
@@ -128,7 +120,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request, $id)
+    public function update(PostUpRequest $request, $id)
     {
         $post = Post::find($id);
         if ($request->file('image')){
@@ -143,14 +135,28 @@ class PostController extends Controller
             $post->image = $filename;
 
 
+        } else {
+            $post->image = $post->image;
         }
         
-        $post->date = $request->date;
-        $post->month = $request->month;
+       
+       
         $post->titre = $request->titre;
         $post->body = $request->body;
         $post->state_id = $request->state_id;
+        
         $post->save();
+
+        $categories = $request->categorie_id;
+        $post->categorie()->attach($categories);
+        $post->categorie()->sync($categories);
+
+        $tags = $request->tag_id;
+        $post->tag()->attach($tags);
+        $post->tag()->sync($tags);
+    
+    
+
         return redirect('/posts')->with('success', 'Post updated !');
     }
 

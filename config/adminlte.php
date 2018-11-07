@@ -118,9 +118,9 @@ return [
             'text'        => 'Pages',
             'url'         => '/',
             'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
+
         ],
+
         'ACCOUNT SETTINGS',
         [
             'text' => 'users',

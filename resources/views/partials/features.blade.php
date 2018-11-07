@@ -1,7 +1,7 @@
 @section('features')
 
 <!-- features section -->
-<div class="team-section spad">
+<div class="team-section spad" id='team-section'>
     <div class="overlay"></div>
     <div class="container">
         <div class="section-title">
@@ -10,35 +10,19 @@
         <div class="row">
             <!-- feature item -->
             <div class="col-md-4 col-sm-4 features">
+                @foreach ($group[0] as $project)
+                    
                 <div class="icon-box light left">
                     <div class="service-text">
-                        <h2>Get in the lab</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+                        <h2>{{$project->projectTitre}}</h2>
+                        <p>{{$project->projectDesc}}</p>
                     </div>
                     <div class="icon">
-                        <i class="flaticon-002-caliper"></i>
+                        <i class="{{$project->icon->svg}}"></i>
                     </div>
                 </div>
-                <!-- feature item -->
-                <div class="icon-box light left">
-                    <div class="service-text">
-                        <h2>Projects online</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-                    </div>
-                    <div class="icon">
-                        <i class="flaticon-019-coffee-cup"></i>
-                    </div>
-                </div>
-                <!-- feature item -->
-                <div class="icon-box light left">
-                    <div class="service-text">
-                        <h2>SMART MARKETING</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-                    </div>
-                    <div class="icon">
-                        <i class="flaticon-020-creativity"></i>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
             <!-- Devices -->
             <div class="col-md-4 col-sm-4 devices">
@@ -48,39 +32,23 @@
             </div>
             <!-- feature item -->
             <div class="col-md-4 col-sm-4 features">
+                @foreach ($group[1] as $project)
+                    
                 <div class="icon-box light">
                     <div class="icon">
-                        <i class="flaticon-037-idea"></i>
+                        <i class="{{$project->icon->svg}}"></i>
                     </div>
                     <div class="service-text">
-                        <h2>Get in the lab</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+                        <h2>{{$project->projectTitre}}</h2>
+                        <p>{{$project->projectDesc}}</p>
                     </div>
                 </div>
-                <!-- feature item -->
-                <div class="icon-box light">
-                    <div class="icon">
-                        <i class="flaticon-025-imagination"></i>
-                    </div>
-                    <div class="service-text">
-                        <h2>Projects online</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-                    </div>
-                </div>
-                <!-- feature item -->
-                <div class="icon-box light">
-                    <div class="icon">
-                        <i class="flaticon-008-team"></i>
-                    </div>
-                    <div class="service-text">
-                        <h2>SMART MARKETING</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
         <div class="text-center mt100">
-            <a href="" class="site-btn">{{$titles[0]->introButton}}</a>
+            <a href="#services-card-section" class="site-btn">{{$titles[0]->introButton}}</a>
         </div>
     </div>
 </div>

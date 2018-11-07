@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Carousel;
 use App\Http\Requests\CarouselRequest;
 use ImageIntervention;
+use Storage;
 
 class CarouselController extends Controller
 {
@@ -61,6 +62,7 @@ class CarouselController extends Controller
     }
     public function destroy($id){
         $carou = Carousel::find($id);
+        Storage::delete(['img/carousel/thumb/'.$carou->carouThumb, 'img/carousel/nm/'.$carou->carouImg]);
         $carou->delete();
         return redirect()->back()->with('ded', 'Image deleted !');
     }

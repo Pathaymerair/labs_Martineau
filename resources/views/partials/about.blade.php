@@ -11,30 +11,30 @@
 					<div class="col-md-4 col-sm-6">
 						<div class="lab-card">
 							<div class="icon">
-								<i class="flaticon-023-flask"></i>
+								<i class="{{$serviceUn->icon->svg}}"></i>
 							</div>
-							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<h2>{{$serviceUn->serviceTitre}}</h2>
+							<p>{{$serviceUn->serviceDesc}}</p>
 						</div>
 					</div>
 					<!-- single card -->
 					<div class="col-md-4 col-sm-6">
 						<div class="lab-card">
 							<div class="icon">
-								<i class="flaticon-011-compass"></i>
+								<i class="{{$serviceDeux->icon->svg}}"></i>
 							</div>
-							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<h2>{{$serviceDeux->serviceTitre}}</h2>
+							<p>{{$serviceDeux->serviceDesc}}</p>
 						</div>
 					</div>
 					<!-- single card -->
 					<div class="col-md-4 col-sm-12">
 						<div class="lab-card">
 							<div class="icon">
-								<i class="flaticon-037-idea"></i>
+								<i class="{{$serviceTrois->icon->svg}}"></i>
 							</div>
-							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<h2>{{$serviceTrois->serviceTitre}}</h2>
+							<p>{{$serviceTrois->serviceDesc}}</p>
 						</div>
 					</div>
 				</div>
