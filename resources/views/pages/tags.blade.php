@@ -59,18 +59,22 @@
               <td>{{$tag->user->name}}</td>
                 <td>{{$tag->state->etat}}</td>
               <td>
+                  @can('tags', $tag->id)
                   <form action="/tag/edit/{{$tag->id}}" method="GET">
                 @csrf
                 <button class="btn btn-warning">Edit</button>
                 </form>
+                @endcan
               </td>
               <td>
+                    @can('tags', $tag->id)
                   <form action="/tag/delete/{{$tag->id}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger">Delete</button>
                 
                 </form>
+                @endcan
               </td>
             </tr>
 

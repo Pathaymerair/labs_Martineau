@@ -24,7 +24,7 @@
                 <label for="email">User email</label>
                 <input type="email" id='email' name='email' class='form-control' value='{{$user->email}}'>
             </div>
-
+            @can('superadmin')
             <div class="form-group">
                     <label for="exampleFormControlSelect1">Example select</label>
                     <select class="form-control" id="exampleFormControlSelect1" name='role_id'>
@@ -33,6 +33,7 @@
                         @endforeach
                     </select>
                 </div>
+                @endcan
             <button class="btn btn-success">Submit</button>
         </form>
 </div>

@@ -13,6 +13,7 @@ use App\ImageUser;
 use App\Post;
 use App\Comment;
 use ImageIntervention;
+use Storage;
 
 class UserController extends Controller
 {
@@ -99,7 +100,10 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role_id = $request->role_id;
+        if ($request->role_id){
+
+            $user->role_id = $request->role_id;
+        }
         $user->save();
         return redirect('/users')->with('success', 'User updated successfully !');
     }
@@ -116,22 +120,26 @@ class UserController extends Controller
         $user = User::find($id);
         if($user->profil){
             $user->profil->delete();
-            if ($user->imageUser){
-                Storage::delete(['img/team/thumb/'.$user->imageUser->imageUserThumbnail, 'img/team/imgnm/'.$user->imageUser->imageUser]);
-            }
+            // if ($user->imageUser){
+            //     Storage::delete(['img/team/thumb/'.$user->imageUser->imageUserThumbnail, 'img/team/imgnm/'.$user->imageUser->imageUser]);
+            // }
         }
-        $post = Post::where('user_id', $user->id)->get();
-     
-        if ($user->post){
-            $user->post->state_id = 3;
-        }
+        $posts = Post::where('user_id', $user->id)->get();
+        foreach($posts as $post){
+            $post->state_id = 3;
+            $post->save();
+        } 
+        $comments = Comment::where('user_id', $user->id)->get();
+            foreach($comments as $comment){
 
-        if ($user->comment){
-            $user->comment->state_id = 3;
-        }
+                $comment->state_id = 3;
+                $comment->save();
+            }
         
         
-        $user->delete();
+        $user->state_id = 3;
+        $user->save();
+        // $user->delete();
         return redirect()->back()->with('ded', 'User removed successfully !');
     }
     public function random(){

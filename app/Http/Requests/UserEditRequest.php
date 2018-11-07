@@ -26,7 +26,7 @@ class UserEditRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => "unique:users,email,$this->id,id",
-            'role_id' => 'required',
+    
         ];
     }
 }

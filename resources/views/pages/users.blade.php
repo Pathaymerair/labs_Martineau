@@ -15,16 +15,16 @@
                 <th scope="col">Name</th>
                 <th scope="col">Role</th>
                 <th scope="col">Profil</th>
-                @can('superadmin')
+                
                 <th scope="col">Edit</th>
-                @endcan
+               
                 <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
     
                 @foreach ($users as $user)
-                    
+                    @if ($user->state_id !== 3)
                 <tr>
                   <th scope="row">{{$user->id}}</th>
                   <td>
@@ -36,31 +36,38 @@
                   <td>{{$user->name}}</td>
                   <td>{{$user->role->roleName}}</td>
                   <td>
+                      @can('profil', $user->id)
                         <form action="profil/{{$user->id}}" method='GET'>
                             @csrf
                                 <button class="btn btn-success">
                                     Profil
                                 </button>
                         </form>
+                      
+                        @endcan
                   </td>
-                  @can('superadmin')
+                  
                   <td>
+                        @can('profil', $user->id)
                       <form action="/user/edit/{{$user->id}}" method="GET">
                     @csrf
                     <button class="btn btn-warning">Edit</button>
                     </form>
+                    @endcan
                   </td>
-                  @endcan
+                  
                   <td>
+                        @can('profil', $user->id)
                       <form action="/user/delete/{{$user->id}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger">Delete</button>
                     
                     </form>
+                    @endcan
                   </td>
                 </tr>
-    
+                @endif
                 @endforeach
     
             </tbody>

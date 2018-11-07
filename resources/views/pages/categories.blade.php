@@ -59,17 +59,20 @@
               <td>{{$categorie->user->name}}</td>
                 <td>{{$categorie->state->etat}}</td>
               <td>
+                  @can('categories', $categorie->id)
                   <form action="/categorie/edit/{{$categorie->id}}" method="GET">
                 @csrf
                 <button class="btn btn-warning">Edit</button>
                 </form>
+                @endcan
               </td>
               <td>
+                    @can('categories', $categorie->id)
                   <form action="/categorie/delete/{{$categorie->id}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger">Delete</button>
-                
+                    @endcan
                 </form>
               </td>
             </tr>

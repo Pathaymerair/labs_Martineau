@@ -52,4 +52,7 @@ class User extends Authenticatable
     public function Tag(){
         return $this->hasMany('App\Tag');
     }
+    public function State(){
+        return $this->belongsTo('App\State');
+    }
 }

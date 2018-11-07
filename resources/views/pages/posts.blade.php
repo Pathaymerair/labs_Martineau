@@ -49,17 +49,21 @@
                   <td>{{$post->state->etat}}</td>
 
                   <td>
+                    @can('post', $post->id)
                       <form action="/post/edit/{{$post->id}}" method="GET">
                     @csrf
                     <button class="btn btn-warning">Edit</button>
                     </form>
+                    @endcan
                   </td>
                   <td>
+                    @can('post', $post->id)
                     <form action="/post/delete/{{$post->id}}" method="POST">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger">Delete</button>
                   </form>
+                  @endcan
                 </td>
 
                 </tr>
