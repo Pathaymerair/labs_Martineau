@@ -39,6 +39,7 @@ class EditBlogRequest extends FormRequest
             'newsletterButton' => 'required',
             'copyright' => 'required',
             'copyrightName' => 'required',
+            'addImage' => 'nullable|file',
         ];
     }
 }

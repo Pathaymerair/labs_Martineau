@@ -44,11 +44,11 @@
                 </div>
                 @endif
                 @endforeach
-                {{$posts->links()}}
                 <!-- Post item -->
-
-
+                
+                
                 <!-- Pagination -->
+                {{$posts->links()}}
              
             </div>
             <!-- Sidebar area -->
@@ -110,7 +110,6 @@
                                     </a>
                                     </form>
                             </li>
-                        {{-- <li><a href="/tag/search" name='searchTag' value='{{$tag->nameTag}}'>{{$tag->nameTag}}</a></li> --}}
                         @endif
                         @endforeach
 
@@ -128,7 +127,7 @@
                 <div class="widget-item">
                     <h2 class="widget-title">{{$titles[0]->addTitle}}</h2>
                     <div class="add">
-                        <a href=""><img src="img/add.jpg" alt=""></a>
+                        <a href=""><img src="img/add/nm/{{$titles[0]->addImage}}" alt=""></a>
                     </div>
                 </div>
             </div>

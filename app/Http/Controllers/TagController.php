@@ -12,13 +12,16 @@ class TagController extends Controller
 {
     public function index(){
         $tags = Tag::all();
-        $tags = Tag::with('user')->get();
+        $tags = Tag::with('user')->paginate(10);
         return view('pages.tags', compact('tags'));
     }
     public function create(TagRequest $request){
         $tag = new Tag;
         $tag->nameTag = $request->nameTag;
         $tag->user_id = Auth::User()->id;
+        if (Auth::user()->role_id == 1){
+            $tag->state_id = 2;
+        } 
         $tag->save();
         return redirect()->back()->with('success', 'Tag successfully created !');
     }

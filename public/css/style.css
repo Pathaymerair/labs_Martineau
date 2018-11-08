@@ -168,6 +168,8 @@ ul {
 	min-width: 170px;
 	text-align: center;
 	border: none;
+	margin-bottom: 100px;
+	margin-top: 50px;
 }
 
 .site-btn.btn-2 {
@@ -843,6 +845,7 @@ ul {
 .footer-section {
 	background: #220c3b;
 	text-align: center;
+	overflow: hidden;
 }
 
 .footer-section h2 {

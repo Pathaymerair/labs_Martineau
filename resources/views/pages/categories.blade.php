@@ -81,6 +81,7 @@
 
         </tbody>
       </table>
+      {{$categories->links()}}
 </div>
 
 

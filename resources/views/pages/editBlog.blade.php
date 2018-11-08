@@ -19,7 +19,7 @@
     </div>
 @endif
 <h1>Manage Blog Page</h1>
-<form action="/updateBlogPage/{{$titles[0]->id}}" method="POST">
+<form action="/updateBlogPage/{{$titles[0]->id}}" method="POST" enctype="multipart/form-data">
 @csrf
 
 
@@ -208,7 +208,11 @@
                         <input type="text" id='addTitle' name='addTitle' class='form-control' value="{{$titles[0]->addTitle}}">
                     </div>
                     <div class="add">
-                        <a href=""><img src="img/add.jpg" alt=""></a>
+                        <a href=""><img src="img/add/nm/{{$titles[0]->addImage}}" alt=""></a>
+                        <div class="form-group">
+                            <label for="addImage">add Image</label>
+                            <input type="file" id='addImage' name='addImage' class='form-control' value="{{$titles[0]->addImage}}">
+                        </div>
                     </div>
                 </div>
             </div>

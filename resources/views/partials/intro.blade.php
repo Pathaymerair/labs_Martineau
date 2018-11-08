@@ -4,7 +4,7 @@
 <div class="hero-section">
     <div class="hero-content">
         <div class="hero-center">
-            <img src="img/big-logo.png" alt="">
+            <img src="img/logos/nm/{{$titles[0]->bigLogo}}" alt="">
       
             <p>{{$titles[0]->slogan}}</p>
     

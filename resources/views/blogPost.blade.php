@@ -44,20 +44,24 @@
     
 
         <!-- Navigation -->
-    <header>
-        <div class="responsive"><i class="fa fa-bars"></i></div>
-        <nav>
-            <ul class="menu-list">
-                <li><a href="/">Home</a></li>
-                <li><a href="/service">Services</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/contact">Contact</a></li>
-                @if (Auth::user())
-                    <li><a href="/home">Home</a></li>
-				@endif
-            </ul>
-        </nav>
-    </header>
+		<header class="header-section">
+			<div class="logo">
+				<img src="/img/logos/thumb/{{$titles->logo}}" alt=""><!-- Logo -->
+			</div>
+			<!-- Navigation -->
+			<div class="responsive"><i class="fa fa-bars"></i></div>
+			<nav>
+				<ul class="menu-list">
+					<li ><a href="/">Home</a></li>
+					<li><a href="/service">Services</a></li>
+					<li class="active"><a href="/blog">Blog</a></li>
+					<li><a href="/contact">Contact</a></li>
+					@if (Auth::user())
+					<li><a href="/home">Home</a></li>
+					@endif
+				</ul>
+			</nav>
+		</header>
 
 	<div class="page-top-section">
 		<div class="overlay"></div>
@@ -201,10 +205,17 @@
 							<h2 class="widget-title">{{$titles->categoriesTitle}}</h2>
 							<ul>
 								@foreach ($categories as $cate)
-									@if ($cate->state_id == 2)
-								<li><a href="#">{{$cate->nameCatego}}</a></li>
-									@endif
-								@endforeach
+                            @if ($cate->state_id == 2)
+                        <li><form action="/categorie/search" method="GET">
+                            @csrf
+                            <input type="hidden" value='{{$cate->nameCatego}}' name='searchCategorie'>
+                                    <a onclick="event.target.parentElement.submit();" style="cursor: pointer;">
+                                            {{$cate->nameCatego}}
+                            </a>
+                            </form>
+                        </li>
+                            @endif
+                        @endforeach
 		
 							</ul>
 						</div>
@@ -213,9 +224,9 @@
 							<h2 class="widget-title">{{$titles->instaTitle}}</h2>
 							<ul class="instagram">
 								@foreach($instas as $insta)
-								<li><img src="img/instagram/nm/{{$insta->instaImg}}" alt=""></li>
-		
-								@endforeach
+                        <li><img src="/img/instagram/nm/{{$insta->instaImg}}" alt=""></li>
+
+                        @endforeach
 							</ul>
 						</div>
 						<!-- Single widget -->
@@ -223,11 +234,18 @@
 							<h2 class="widget-title">{{$titles->tagsTitle}}</h2>
 							<ul class="tag">
 								@foreach ($tags as $tag)
-									@if ($tag->state_id == 2)
-								<li><a href="">{{$tag->nameTag}}</a></li>
-								@endif
-								@endforeach
-		
+                            @if ($tag->state_id == 2)
+                            <li>
+                                <form action="/tag/search" method="GET">
+                                    @csrf
+                                    <input type="hidden" value='{{$tag->nameTag}}' name='searchTag'>
+                                            <a onclick="event.target.parentElement.submit();" style="cursor: pointer;">
+                                        {{$tag->nameTag}}
+                                    </a>
+                                    </form>
+                            </li>
+                        @endif
+                        @endforeach
 							</ul>
 						</div>
 						<!-- Single widget -->
@@ -242,7 +260,7 @@
 						<div class="widget-item">
 							<h2 class="widget-title">{{$titles->addTitle}}</h2>
 							<div class="add">
-								<a href=""><img src="img/add.jpg" alt=""></a>
+								<a href=""><img src="/img/add/nm/{{$titles->addImage}}" alt=""></a>
 							</div>
 						</div>
 					</div>

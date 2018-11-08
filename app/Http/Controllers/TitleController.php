@@ -17,6 +17,7 @@ use App\Tag;
 use App\Categorie;
 use App\Post;
 use App\Comment;
+use Storage;
 
 use Mapper;
 use App\Http\Requests\EditHomeRequest;
@@ -31,7 +32,7 @@ class TitleController extends Controller
         $services = service::with('icon')->get();
         $testimonials = Testimonial::all();
         $services = Service::Paginate(9);
-        $users = User::all();
+        $users = User::where('state_id', 2)->get();
         $roles = Role::all();
         $imageUsers = ImageUser::all();
         do {
@@ -84,6 +85,24 @@ class TitleController extends Controller
 
     public function update(EditHomeRequest $request, $id){
         $title = Title::find($id);
+        if ($request->file('logo')){
+
+            $images= $request->file('logo');
+              
+            $filenamethumb = time().'thumb'.$images->hashName();
+            $filename = time().$images->hashName();
+            
+            $resized = ImageIntervention::make($images)->resize(120, 40);
+            $resized->save('img/logos/thumb/'.$filenamethumb);
+    
+            $resize = ImageIntervention::make($images)->resize(510,150);
+            $resize->save('img/logos/nm/'.$filename);
+            
+          
+            $title->bigLogo = $filename;
+            $title->logo = $filenamethumb;
+      
+        }  
         $title->slogan = $request->slogan;
         $title->introSlogan = $request->introSlogan;
         $title->overIntroSlogan = $request->overIntroSlogan;
@@ -179,6 +198,15 @@ class TitleController extends Controller
     public function updateBlog(EditBlogRequest $request, $id){
 
         $title = Title::find($id);
+        if ($request->file('addImage')){
+            Storage::delete('/img/add/nm/'.$title->addImage);
+            
+            $images= $request->file('addImage');
+            $filename = time().$images->hashName();
+            $resize = ImageIntervention::make($images);
+            $resize->save('img/add/nm/'.$filename);
+            $title->addImage = $filename;
+        }
         $title->blogPage = $request->blogPage;
         $title->homeRef = $request->homeRef;
         $title->blogRef = $request->blogRef;
@@ -229,15 +257,24 @@ class TitleController extends Controller
     }
 
     public function search(Request $request){
+        $titles = Title::find(1)->first();
+        $instas = Instagram::all();
+        $instas = $instas->random(6);
+        $categories = Categorie::orderBy('nameCatego')->get();
+        $tags = Tag::orderBy('nameTag')->get();      
+        $posts = Post::where('state_id',2)->orderBy('id', 'desc')->paginate(3);
+        $comment = Comment::with('post')->where('state_id', 2)->get();
         $search = $request->search;
         if ($search != ' '){
             $post = Post::where('titre', 'like', '%'.$search.'%')
                     ->orWhere('body', 'like', '%'.$search.'%')
                     ->paginate()
                     ;
+                    if ($post->state_id == 2){
                 if (count($post) > 0){
-                    return view('/test')->withDetails($post)->withQuery($search);
+                    return view('/test', compact('titles', 'instas', 'categories', 'tags', 'posts', 'comment'))->withDetails($post)->withQuery($search);
                 }
+            }
         }
         return redirect('blog')->with('ded', 'No post found !');
     }
@@ -257,35 +294,54 @@ class TitleController extends Controller
     }
 
     public function searchTag(Request $request){
+        $titles = Title::find(1)->first();
+        $instas = Instagram::all();
+        $instas = $instas->random(6);
+        $categories = Categorie::orderBy('nameCatego')->get();
+        $tags = Tag::orderBy('nameTag')->get();      
+        $posts = Post::where('state_id',2)->orderBy('id', 'desc')->paginate(3);
+        $comment = Comment::with('post')->where('state_id', 2)->get();
         $search = $request->searchTag;
         $tag = Tag::where('nameTag', 'like', $search)->first();
         $posts = Post::all();
         $postArray = collect([]);
         foreach($posts as $post){
             if ($post->tag->contains($tag)){
+                if ($post->state_id == 2){
                 $postArray->push($post);
+                }
             }
         }   
         if ($postArray->isEmpty()){
             return redirect('blog')->with('ded', 'No post found !');
         }
-        return view('/test')->withDetails($postArray)->withQuery($search);
+        return view('/test', compact('titles', 'instas', 'categories', 'tags', 'posts', 'comment'))->withDetails($postArray)->withQuery($search);
     }
 
     public function searchCategorie(Request $request){
+        $titles = Title::find(1)->first();
+        $instas = Instagram::all();
+        $instas = $instas->random(6);
+        $categories = Categorie::orderBy('nameCatego')->get();
+        $tags = Tag::orderBy('nameTag')->get();      
+        $posts = Post::where('state_id',2)->orderBy('id', 'desc')->paginate(3);
+        $comment = Comment::with('post')->where('state_id', 2)->get();
         $search = $request->searchCategorie;
         $categorie = Categorie::where('nameCatego', 'like', $search)->first();
         $posts = Post::all();
         $postArray = collect([]);
         foreach($posts as $post){
             if ($post->categorie->contains($categorie)){
-                $postArray->push($post);
+                if ($post->state_id == 2){
+
+                    $postArray->push($post);
+                }
             }
         }   
         if ($postArray->isEmpty()){
             return redirect('blog')->with('ded', 'No post found !');
         }
-        return view('/test')->withDetails($postArray)->withQuery($search);
+        return view('/test', compact('titles', 'instas', 'categories', 'tags', 'posts', 'comment'))->withDetails($postArray)->withQuery($search);
     }
 
 }

@@ -50,6 +50,7 @@
     @yield('servicesHeader')
     @yield('contactHeader')
     @yield('about')
+    @yield('search')
     @yield('blogContent')
     @yield('postBlog')
     @yield('sidebar')

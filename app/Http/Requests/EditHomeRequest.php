@@ -58,6 +58,7 @@ class EditHomeRequest extends FormRequest
         'contactMail' => 'required', 
         'copyright' => 'required',
         'copyrightName' => 'required', 
+        'logo' => 'nullable',
         ];
     }
 }

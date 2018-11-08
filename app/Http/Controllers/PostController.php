@@ -28,7 +28,7 @@ class PostController extends Controller
     {
         $posts = Post::with('user')->get();
 
-        $posts = Post::orderBy('id', 'desc')->get();
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
     
         $categories = Categorie::all();
         $tags = Tag::all();
@@ -72,9 +72,9 @@ class PostController extends Controller
 
         }
         $post->user_id = Auth::User()->id;
-
-       
-       
+        if (Auth::user()->role_id == 1){
+            $post->state_id = 2;
+        }    
         $post->titre = $request->titre;
         $post->body = $request->body;
      

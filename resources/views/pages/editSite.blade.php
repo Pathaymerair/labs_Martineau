@@ -21,13 +21,17 @@
     </div>
 @endif
 
-<form action="/updateSite/{{$titles[0]->id}}" method="POST">
+<form action="/updateSite/{{$titles[0]->id}}" method="POST" enctype="multipart/form-data">
 @csrf
 {{-- 
 <div class="hero-section">
     <div class="hero-content">
         <div class="hero-center"> --}}
             <img src="img/big-logo.png" alt="">
+            <div class="form-group">
+                <label for="logo">Logo</label>
+                <input type="file" id='logo' name='logo' class='form-control' value="{{$titles[0]->logo}}">
+            </div>
       
             <p>{{$titles[0]->slogan}}</p>
             <div class="form-group">

@@ -72,8 +72,10 @@
     
             </tbody>
           </table>
+          {{$users->links()}}
     </div>
 
+    @can('superadmin')
 
     <h1 class='mt-5'>Create new User</h1>
 
@@ -120,6 +122,8 @@
                   </div>
             <button class="btn btn-success">Submit</button>
         </form>
+
+        @endcan
 @stop
 
 

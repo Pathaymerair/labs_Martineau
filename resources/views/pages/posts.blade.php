@@ -72,6 +72,7 @@
     
             </tbody>
           </table>
+          {{$posts->links()}} 
     </div>
 
 <!-- page section -->

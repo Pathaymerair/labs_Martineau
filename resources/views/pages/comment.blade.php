@@ -73,6 +73,7 @@
     
             </tbody>
           </table>
+          {{$comments->links()}} 
     </div>
 
 

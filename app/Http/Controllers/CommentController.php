@@ -26,6 +26,9 @@ class CommentController extends Controller
         if (Auth::User()){
             $comment->user_id = Auth::User()->id;
         }
+        if (Auth::user()->role_id == 1){
+            $comment->state_id = 2;
+        } 
         $comment->random_id = Random::inRandomOrder()->first()->id;
         $comment->post_id = $post->id;
         
@@ -43,9 +46,9 @@ class CommentController extends Controller
     }
 
     public function index(){
-        $comments = Comment::all();
-        $comments = Comment::with('user')->orderBy('id', 'desc')->get();
-        $comments = Comment::with('post')->orderBy('id', 'desc')->get();
+        $comments = Comment::orderBy('id', 'desc')->paginate(10);
+        
+       
     
         return view('pages.comment', compact('comments'));
     }

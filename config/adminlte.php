@@ -127,11 +127,7 @@ return [
             'url'  => '/users',
             'icon' => 'user',
         ],
-        [
-            'text' => 'Roles',
-            'url'  => '/roles',
-            'icon' => 'lock',
-        ],     
+   
         [
             'text' => 'Icons',
             'url'  => '/icons',
@@ -240,19 +236,7 @@ return [
             ],
         ],
 
-        'LABELS',
-        [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
-        ],
+        
     ],
 
     /*

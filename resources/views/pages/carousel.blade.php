@@ -3,22 +3,22 @@
 @section('content')
 
 <div class="container">
-        @if (\Session::has('up'))
-            <div class="alert alert-success">
-                <p>{{ \Session::get('up') }} <i class="close icon" data-dismiss='alert'></i></p>
-                
-            </div><br />
-            @endif
+    @if (\Session::has('up'))
+        <div class="alert bg-success" style='width:50%'>
+            <p class=""><b>{{ \Session::get('up') }} </b><i class="close icon" data-dismiss='alert'></i></p>
+            
+        </div><br />
+    @endif
             <h1 class='mt-5'>Add a carousel item</h1>
     @if (\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-success">
+        <p class="">{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
     @if (\Session::has('ded'))
-    <div class="alert alert-danger">
-        <p>{{ \Session::get('ded') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-danger">
+        <p><b>{{ \Session::get('ded') }} </b><i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif

@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         $roles = Role::all();
         $profils = Profil::all();
         $imageUsers = ImageUser::all();

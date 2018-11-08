@@ -29,7 +29,7 @@
                     <label for="exampleFormControlSelect1">Example select</label>
                     <select class="form-control" id="exampleFormControlSelect1" name='role_id'>
                         @foreach ($roles as $role)
-                        <option value='{{$role->id}}'>{{$role->roleName}}</option>
+                        <option value='{{$role->id}}'{{$user->role_id == $role->id ? 'selected' : ''}}>{{$role->roleName}}</option>
                         @endforeach
                     </select>
                 </div>
