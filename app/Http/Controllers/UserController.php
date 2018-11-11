@@ -83,8 +83,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $superadmin = User::where('role_id', 1)->get();
+ 
         $roles = Role::all();
-        return view('pages.userEdit', compact('user', 'roles'));
+        return view('pages.userEdit', compact('user', 'roles', 'superadmin'));
     }
 
     /**

@@ -16,6 +16,7 @@ use App\State;
 use Auth;
 use App\Instagram;
 use ImageIntervention;
+use App\Http\Requests\TagPostRequest;
 
 class PostController extends Controller
 {
@@ -82,7 +83,6 @@ class PostController extends Controller
 
         $categories = $request->categorie_id;
         $post->categorie()->attach($categories);
-
         $tags = $request->tag_id;
         $post->tag()->attach($tags);
 
@@ -142,17 +142,19 @@ class PostController extends Controller
         }
         
        
-       
+        $post->created_at = $request->created_at;
         $post->titre = $request->titre;
         $post->body = $request->body;
         $post->state_id = $request->state_id;
         
         $post->save();
 
+        $post->categorie()->detach();
         $categories = $request->categorie_id;
         $post->categorie()->attach($categories);
         $post->categorie()->sync($categories);
 
+        $post->tag()->detach();
         $tags = $request->tag_id;
         $post->tag()->attach($tags);
         $post->tag()->sync($tags);
@@ -175,6 +177,18 @@ class PostController extends Controller
         $post->save();
         return redirect()->back()->with('success', 'Post deleted !');
     }
+    public function tag(TagPostRequest $request)
+    {
+        $tag = new Tag;
+        $tag->nameTag = $request->nameTag;
+        $tag->user_id = Auth::User()->id;
+        if (Auth::user()->role_id == 1){
+            $tag->state_id = 2;
+        } 
+        $tag->save();
+        return redirect()->back();
+    }
+    }
 
     
-}
+

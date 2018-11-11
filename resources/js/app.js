@@ -11,7 +11,8 @@ require('../../public/js/owl.carousel.min')
 require('../../public/js/magnific-popup.min')
 require('../../public/js/bootstrap.min')
 require('../../public/js/circle-progress.min')
-// require('../../public/js/map')
+
+require('../../public/js/map')
 require('../../public/js/main')
 
 /**

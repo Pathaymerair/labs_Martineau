@@ -6,14 +6,14 @@
 <div class="container">
     <h1>Create icon</h1>
     @if (\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-success">
+        <p class="text-white"><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
     @if (\Session::has('ded'))
-    <div class="alert alert-danger">
-        <p>{{ \Session::get('ded') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-danger">
+        <p class="text-white"><b>{{ \Session::get('ded') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
@@ -24,7 +24,7 @@
                 <input type="text" id='svg' name='svg' class='form-control' value='{{old('svg')}}'>
             </div>
             <div class="form-group">
-                <label for="svgSlug">roleSlug</label>
+                <label for="svgSlug">iconSlug</label>
                 <input type="text" id='svgSlug' name='svgSlug' class='form-control' value='{{old('svgSlug')}}'>
             </div>
             <button class="btn btn-success">Submit</button>

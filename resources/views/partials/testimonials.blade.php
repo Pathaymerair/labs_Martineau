@@ -14,7 +14,7 @@
                     @foreach($testimonials as $testi)
                     <div class="testimonial">
                         <span>‘​‌‘​‌</span>
-                        <p>{{$testi->testiDesc}}</p>
+                        <p>{!!$testi->testiDesc!!}</p>
                         <div class="client-info">
                             <div class="avatar">
                                 <img src="img/avatar/{{$testi->client->clientImg}}" alt="">

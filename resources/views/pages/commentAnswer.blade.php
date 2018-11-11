@@ -5,20 +5,6 @@
 <div class="container">
 
 
-    @if (\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
-        
-    </div><br />
-    @endif
-    @if ($errors->any())
-    <div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    </div>
 @endif
 
 
@@ -43,8 +29,8 @@
                     @endif
                     
                     @if (\Session::has('success'))
-                    <div class="alert alert-success">
-                        <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
+                    <div class="alert bg-success">
+                        <p class="text-white"><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
                         
                     </div><br />
                     @endif

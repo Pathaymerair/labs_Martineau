@@ -5,8 +5,8 @@
 
 
     @if (\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-success">
+        <p class="text-white"><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
@@ -164,7 +164,15 @@
 
 
 
-<button class="btn btn-info">Submit changes</button>
+<button id='validate' class="btn btn-info">Submit changes</button>
 </form>
 
+<script>
+    window.onload = function(){ 
+    document.getElementById('validate').onclick = function() {
+        confirm("Are you sure about that?");
+        
+    }
+    }
+    </script>
 @stop

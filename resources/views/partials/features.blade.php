@@ -40,7 +40,7 @@
                     </div>
                     <div class="service-text">
                         <h2>{{$project->projectTitre}}</h2>
-                        <p>{{$project->projectDesc}}</p>
+                        <p>{!!$project->projectDesc!!}</p>
                     </div>
                 </div>
                 @endforeach

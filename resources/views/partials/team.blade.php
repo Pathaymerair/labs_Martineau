@@ -21,9 +21,12 @@
             <!-- single member -->
             <div class="col-sm-4">
                 <div class="member">
-                    <img src="img/team/2.jpg" alt="">
-                    <h2>Christinne Williams</h2>
-                    <h3>Junior developer</h3>
+                <img src="img/team/imgnm/{{$titles[0]->user->imageUser->imageUser}}" alt="">
+                <h2> {{$titles[0]->user->profil->profilFirstName}} {{$titles[0]->user->profil->profilLastName}}</h2>
+                @if ($titles[0]->user->profil->profilJob)
+                    <h3>{{$titles[0]->user->profil->profilJob}}</h3>
+                @endif
+                   
                 </div>
             </div>
             <!-- single member -->

@@ -6,8 +6,8 @@
 
 
     @if (\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-success">
+        <p class="text-white"><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
@@ -33,10 +33,17 @@
     @csrf
     <div class="post-item">
             <div class="post-thumbnail">
-                <img src="img/blog/{{$post->image}}" alt="">
+                <img src="/img/blog/{{$post->image}}" alt="">
                     <div class="form-group">
                             <label for="image">Image Article</label>
                             <input type="file" id="image" name='image'>
+                    </div>
+                    <div class="post-date">
+                        <h2>{{$post->created_at->format('d M Y')}}</h2>
+                        <div class="form-group">
+                            <label for="created_at">Date</label>
+                            <input type="date" id="created_at" name='created_at' value='{{ old('created_at', date('Y-m-d'))}}'>
+                    </div>
                     </div>
             </div>
             <div class="post-content">

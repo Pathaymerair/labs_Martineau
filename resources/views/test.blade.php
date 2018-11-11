@@ -40,6 +40,14 @@
 
 </head>
 
+<body>
+
+        <div id="preloder">
+                <div class="loader">
+                    <img src="img/logo.png" alt="">
+                    <h2>Loading.....</h2>
+                </div>
+            </div>
 
 <header class="header-section">
 <div class="logo">
@@ -84,16 +92,42 @@
 
 </div><br />
 @endif
-            <div class="col-md-8 col-sm-7 blog-posts">
+            <div class="col-md-8 col-sm-7 blog-posts mt-5">
                 <!-- Post item -->
                 
                 @if (isset($details))
 
-<p> Les résultats pour votre recherche <b> {{$query}} </b> : </p>
-<ul>
+<h1 class='text-center'> Les résultats pour votre recherche <b> {{$query}} </b> : </h1>
+<ul class=''>
 @foreach ($details as $post)
 @if ($post->state_id == 2)
-<li><a href="/post/{{$post->id}}">{{$post->titre}}</a></li>
+<div class="post-item ">
+    <div class="post-thumbnail">
+        <img src="/img/blog/{{$post->image}}" alt="">
+        <div class="post-date">
+            <h2>{{$post->created_at->format('d')}}</h2>
+            <h3>{{$post->created_at->format('M Y')}}</h3>
+        </div>
+    </div>
+    <div class="post-content">
+        <h2 class="post-title">{{$post->titre}}</h2>
+        <div class="post-meta">
+            <a href="">{{$post->user->name}}</a>
+            <a href="">
+                @foreach($post->tag as $tag)
+                <span>{{$tag->nameTag}}</span>
+            @endforeach
+        </a>
+            <a href="">
+        
+                    {{$post->comment->where('state_id', 2)->count()}} comment(s)                              
+            
+         </a>
+        </div>
+        <p>{!! substr($post->body, 0, 100) !!}</p>
+        <a href="/post/{{$post->id}}" class="read-more">Read More</a>
+    </div>
+</div>
    @endif
 @endforeach
 </ul>
@@ -217,6 +251,7 @@
 <!-- Scripts -->
 
 <script src="{{ asset('/js/app.js') }}" defer></script>
+
 </body>
 
 

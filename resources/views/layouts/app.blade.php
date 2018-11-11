@@ -13,17 +13,17 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-
-
+    
+    
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    
     <!-- Styles -->
-    	<!-- Favicon -->
+   
+    <!-- Favicon -->
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 
 	<!-- Google Fonts -->
@@ -70,7 +70,9 @@
 
 
     <!-- Scripts -->
+    <script src="{{ asset('/js/app.js') }}" defer></script>
+
     
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
 </body>
 </html>

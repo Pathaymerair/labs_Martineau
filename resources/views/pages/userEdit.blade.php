@@ -25,6 +25,7 @@
                 <input type="email" id='email' name='email' class='form-control' value='{{$user->email}}'>
             </div>
             @can('superadmin')
+            @if ($superadmin->count() > 1)
             <div class="form-group">
                     <label for="exampleFormControlSelect1">Example select</label>
                     <select class="form-control" id="exampleFormControlSelect1" name='role_id'>
@@ -33,6 +34,7 @@
                         @endforeach
                     </select>
                 </div>
+                @endif
                 @endcan
             <button class="btn btn-success">Submit</button>
         </form>

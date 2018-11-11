@@ -11,13 +11,13 @@
     <h1>Update Categorie</h1>
     @if (\Session::has('success'))
     <div class="alert bg-success">
-        <p><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
+        <p class="text-white"><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
     @if (\Session::has('ded'))
     <div class="alert bg-danger">
-        <p><b>{{ \Session::get('ded') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
+        <p class="text-white"><b>{{ \Session::get('ded') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif

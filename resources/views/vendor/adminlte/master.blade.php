@@ -9,7 +9,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/font-awesome/css/font-awesome.min.css') }}">
     <!-- Ionicons -->
@@ -43,14 +43,18 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
     <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
     <link rel="stylesheet" href="/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/css/flaticon.css"/>
     <link rel="stylesheet" href="/css/magnific-popup.css"/>
     <link rel="stylesheet" href="/css/owl.carousel.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
     <link rel="stylesheet" href="/css/style.css"/>
+
 </head>
 <body class="hold-transition @yield('body_class')">
 
@@ -84,6 +88,6 @@
 <script src="js/magnific-popup.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/circle-progress.min.js"></script>
-<script src="js/app.js"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

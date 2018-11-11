@@ -31,7 +31,7 @@
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                    <div class="collapse navbar-collapse pull-left " id="navbar-collapse">
                         <ul class="nav navbar-nav">
                             @each('adminlte::partials.menu-item-top-nav', $adminlte->menu(), 'item')
                         </ul>
@@ -47,14 +47,14 @@
             </a>
 
             <!-- Header Navbar -->
-            <nav class="navbar navbar-static-top" role="navigation">
+            <nav class="navbar navbar-static-top " role="navigation">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">{{ trans('adminlte::adminlte.toggle_navigation') }}</span>
                 </a>
             @endif
                 <!-- Navbar Right Menu -->
-                <div class="navbar-custom-menu">
+                <div class="navbar-custom-menu py-0 px-0 mr-0">
 
                     <ul class="nav navbar-nav">
                         <li>

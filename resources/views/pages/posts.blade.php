@@ -6,8 +6,8 @@
 
 
     @if (\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-success">
+        <p class="text-white"><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
@@ -23,14 +23,14 @@
 
 
 <div class="container">
-        <table class="table table-dark">
+        <table class="table table-dark" id='table'>
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Date</th>
-                <th scope="col">Titre</th>
-                <th scope="col">Auteur</th>
-                <th scope="col">State</th>
+                <th scope="col" onclick="sortTable(0)">Date <i class="fas fa-sort"></i></th>
+                <th scope="col" onclick="sortTable(1)">Titre <i class="fas fa-sort"></i></th>
+                <th scope="col" onclick="sortTable(2)">Auteur <i class="fas fa-sort"></i></th>
+                <th scope="col" onclick="sortTable(3)">State <i class="fas fa-sort"></i></th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
 
@@ -121,8 +121,9 @@
                               {{$categorie->nameCatego}}
                             </label>
                             @endif
-                              @endforeach
+                            @endforeach
                         </div>
+                        
                         <div class="checkbox">
                             <h5>Tags</h5>
                                 @foreach ($tags as $tag)
@@ -133,17 +134,72 @@
                                     </label>
                                     @endif
                                 @endforeach
-                        </div>
-
+                            </div>
+                            
+                            
                   </div>
             </div>
         </div>
 
         <button class="btn btn-success">Submit</button>
 </form>
+<div class="widget-item">
+        <form action="/tag/create" method="POST">
+            @csrf
+            <input type="text" name='nameTag' placeholder="Enter new Tag">
+            <button class="search-btn"><i class="fas fa-plus"></i></button>
+        </form>
+        <form action="/categorie/create" method="POST">
+            @csrf
+            <input type="text" name='nameCatego' placeholder="Enter new categorie">
+            <button class="search-btn"><i class="fas fa-plus"></i></button>
+        </form>
+    </div>
+
                 </div>
             </div>
         </div>
 </div>
+
+
+<script>
+
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("table");
+        switching = true;
+        dir = "asc"; 
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            if (dir == "asc") {
+              if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+              }
+            } else if (dir == "desc") {
+              if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+              }
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount ++; 
+          } else {
+            if (switchcount == 0 && dir == "asc") {
+              dir = "desc";
+              switching = true;
+            }
+          }
+        }
+      }
+    </script>  
 
 @stop

@@ -6,8 +6,8 @@
 
 
     @if (\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-success">
+        <p class="text-white"><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
@@ -56,7 +56,7 @@
         @foreach ($testimonials as $testi)
         @if ($testi->state_id == 2 || $testi->state_id == 1)
             <div class="col-xs-4">
-                {{$testi->testiDesc}}
+                {!!$testi->testiDesc!!}
                 <form action="/testimonial/edit/{{$testi->id}}" method="GET">
                     @csrf
                     <button class="btn btn-warning">Edit</button>

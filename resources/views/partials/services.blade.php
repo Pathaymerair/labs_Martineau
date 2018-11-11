@@ -17,7 +17,7 @@
                     </div>
                     <div class="service-text">
                         <h2>{{$service->serviceTitre}}</h2>
-                        <p>{{$service->serviceDesc}}</p>
+                        <p>{!!$service->serviceDesc!!}</p>
                     </div>
                 </div>
             </div>

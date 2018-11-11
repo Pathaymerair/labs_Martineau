@@ -1739,4 +1739,12 @@ ul {
 	.buttons button {
 		margin-bottom: 20px;
 	}
+	.addicon {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		stroke-width: 0;
+		stroke: currentColor;
+		fill: currentColor;
+	  }
 }

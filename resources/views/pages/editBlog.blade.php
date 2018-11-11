@@ -4,8 +4,8 @@
 
 
     @if (\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-success">
+        <p class="text-white"><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
@@ -56,71 +56,42 @@
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">
                 <!-- Post item -->
-                <div class="post-item">
-                    <div class="post-thumbnail">
-                        <img src="img/blog/blog-2.jpg" alt="">
-                        <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title">Just a simple blog post</h2>
-                        <div class="post-meta">
-                            <a href="">Loredana Papp</a>
-                            <a href="">Design, Inspiration</a>
-                            <a href="">2 Comments</a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-                        <a href="blog-post.html" class="read-more">Read More</a>
+                @foreach ($posts as $post)
+                @if ($post->state_id == 2)
+            <div class="post-item">
+                <div class="post-thumbnail">
+                    <img src="/img/blog/{{$post->image}}" alt="">
+                    <div class="post-date">
+                        <h2>{{$post->created_at->format('d')}}</h2>
+                        <h3>{{$post->created_at->format('M Y')}}</h3>
                     </div>
                 </div>
-                <!-- Post item -->
-                <div class="post-item">
-                    <div class="post-thumbnail">
-                        <img src="img/blog/blog-1.jpg" alt="">
-                        <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
-                        </div>
+                <div class="post-content">
+                    <h2 class="post-title">{{$post->titre}}</h2>
+                    <div class="post-meta">
+                        <a href="">{{$post->user->name}}</a>
+                        <a href="">
+                            @foreach($post->tag as $tag)
+                            <span>{{$tag->nameTag}}</span>
+                        @endforeach
+                    </a>
+                        <a href="">
+                    
+                                {{$post->comment->where('state_id', 2)->count()}} comment(s)                              
+                        
+                     </a>
                     </div>
-                    <div class="post-content">
-                        <h2 class="post-title">Just a simple blog post</h2>
-                        <div class="post-meta">
-                            <a href="">Loredana Papp</a>
-                            <a href="">Design, Inspiration</a>
-                            <a href="">2 Comments</a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-                        <a href="blog-post.html" class="read-more">Read More</a>
-                    </div>
+                    <p>{!! substr($post->body, 0, 100) !!}</p>
+                    <a href="/post/{{$post->id}}" class="read-more">Read More</a>
                 </div>
-                <!-- Post item -->
-                <div class="post-item">
-                    <div class="post-thumbnail">
-                        <img src="img/blog/blog-3.jpg" alt="">
-                        <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title">Just a simple blog post</h2>
-                        <div class="post-meta">
-                            <a href="">Loredana Papp</a>
-                            <a href="">Design, Inspiration</a>
-                            <a href="">2 Comments</a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-                        <a href="blog-post.html" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <!-- Pagination -->
-                <div class="page-pagination">
-                    <a class="active" href="">01.</a>
-                    <a href="">02.</a>
-                    <a href="">03.</a>
-                </div>
+            </div>
+            @endif
+            @endforeach
+            <!-- Post item -->
+            
+            
+            <!-- Pagination -->
+            {{$posts->links()}}
             </div>
             <!-- Sidebar area -->
             <div class="col-md-4 col-sm-5 sidebar">
@@ -257,21 +228,29 @@
 	<!-- Footer section -->
 	<footer class="footer-section">
 		<h2>{{$titles[0]->copyright}} <a href="https://colorlib.com" target="_blank">{{$titles[0]->copyrightName}}</a></h2>
+        <div class="form-group">
+            <label for="copyright">copyright</label>
+            <input type="text" id='copyright' name='copyright' class='form-control' value="{{$titles[0]->copyright}}">
+        </div>
+        <div class="form-group">
+            <label for="copyrightName">copyrightName</label>
+            <input type="text" id='copyrightName' name='copyrightName' class='form-control' value="{{$titles[0]->copyrightName}}">
+        </div>
     </footer>
-    <div class="form-group">
-        <label for="copyright">copyright</label>
-        <input type="text" id='copyright' name='copyright' class='form-control' value="{{$titles[0]->copyright}}">
-    </div>
-    <div class="form-group">
-        <label for="copyrightName">copyrightName</label>
-        <input type="text" id='copyrightName' name='copyrightName' class='form-control' value="{{$titles[0]->copyrightName}}">
-    </div>
 	<!-- Footer section end -->
 
 
 
-<button class="btn btn-info">SUBMIT CHANGES &raquo;</button>
+<button id='validate' class="btn btn-info">SUBMIT CHANGES &raquo;</button>
 
 </form>
 
+<script>
+window.onload = function(){ 
+document.getElementById('validate').onclick = function() {
+	confirm("Are you sure about that?");
+	
+}
+}
+</script>
 @stop

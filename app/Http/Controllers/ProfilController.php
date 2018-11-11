@@ -18,8 +18,8 @@ class ProfilController extends Controller
         $user = User::find($id);
         $profils = Profil::all();
         $imageUsers = ImageUser::all();
-        $comments = Comment::with('user')->orderBy('created_at', 'desc')->get();
-        $posts = Post::with('user')->orderBy('created_at', 'desc')->get();
+        $comments = Comment::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+        $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
         return view('pages.profil', compact('user', 'profil', 'imageUsers', 'comments', 'posts'));
     }
     public function edit($id)

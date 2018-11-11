@@ -4,14 +4,14 @@
 @section('content')
 
     @if (\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-success">
+        <p class="text-white"><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
     @if (\Session::has('ded'))
-    <div class="alert alert-danger text-white">
-        <p>{{ \Session::get('ded') }} <i class="close icon" data-dismiss='alert'></i></p>
+    <div class="alert bg-danger text-white">
+        <p class="text-white"><b>{{ \Session::get('ded') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
         
     </div><br />
     @endif
@@ -26,7 +26,7 @@
                     </div>
                     <div class="card-text">
                         <h2>{{$project->projectTitre}}</h2>
-                        {{$project->projectDesc}}
+                        {!!$project->projectDesc!!}
                         <div class="col-xs-6">
                                 <form action="/project/edit/{{$project->id}}" method="GET">
                                     @csrf

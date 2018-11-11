@@ -42,6 +42,12 @@
 
 <body>
     
+		<div id="preloder">
+				<div class="loader">
+					<img src="img/logo.png" alt="">
+					<h2>Loading.....</h2>
+				</div>
+			</div>
 
         <!-- Navigation -->
 		<header class="header-section">
@@ -94,15 +100,13 @@
 						<div class="post-content">
 							<h2 class="post-title">{{$post->titre}}</h2>
 							<div class="post-meta">
-								<a href="">@foreach($post->categorie as $cate)
-									<span>{{$cate->nameCatego}} |</span>
-									@endforeach</a>
+								<a href="">{{$post->user->name}}</a>
 									<a href="">@foreach($post->tag as $tag)
 										<span>{{$tag->nameTag}}</span>
 									@endforeach</a>
 								<a href="">{{$post->comment->where('state_id', 2)->count()}} comment(s)</a>
 							</div>
-							{{$post->body}}
+							{!!$post->body!!}
 						</div>
 						<!-- Post Author -->
 						<div class="author">
@@ -301,5 +305,6 @@
 
     <!-- Scripts -->
     
-    <script src="{{ asset('/js/app.js') }}" defer></script>
+	<script src="{{ asset('/js/app.js') }}" defer></script>
+	
 </body>

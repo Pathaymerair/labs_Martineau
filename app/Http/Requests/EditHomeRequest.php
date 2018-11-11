@@ -59,6 +59,7 @@ class EditHomeRequest extends FormRequest
         'copyright' => 'required',
         'copyrightName' => 'required', 
         'logo' => 'nullable',
+        'userAdmin' => 'required',
         ];
     }
 }

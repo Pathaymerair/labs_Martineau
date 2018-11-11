@@ -57,6 +57,7 @@ Route::post('/posts/create', 'PostController@store')->middleware('can:admin');
 Route::get('/post/edit/{id}', 'PostController@edit')->middleware('can:post,id');
 Route::post('/posts/update/{id}', 'PostController@update')->middleware('can:post,id');
 Route::delete('/post/delete/{id}', 'PostController@destroy')->middleware('can:post,id');
+Route::post('/post/tag/create', 'PostController@tag');
 
 Route::get('/comments', 'CommentController@index')->middleware('can:admin');
 Route::get('/comment/{id}/edit', 'CommentController@edit')->middleware('can:comments,id');

@@ -7,13 +7,14 @@
 
 @section('content')
 <div class="container">
-        <table class="table table-dark">
+    
+        <table class="table table-dark" id='table'>
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Image de profil</th>
-                <th scope="col">Name</th>
-                <th scope="col">Role</th>
+                <th scope="col" onclick="sortTable(1)">Name <i class="fas fa-sort"></i></th>
+                <th scope="col" onclick="sortTable(0)">Role <i class="fas fa-sort"></i></th>
                 <th scope="col">Profil</th>
                 
                 <th scope="col">Edit</th>
@@ -81,8 +82,8 @@
 
 
     @if (\Session::has('success'))
-            <div class="alert alert-success">
-                <p>{{ \Session::get('success') }} <i class="close icon" data-dismiss='alert'></i></p>
+            <div class="alert bg-success">
+                <p class="text-white"><b>{{ \Session::get('success') }}</b> <i class="close icon" data-dismiss='alert'></i></p>
                 
             </div><br />
             @endif
@@ -124,6 +125,47 @@
         </form>
 
         @endcan
+
+
+        <script>
+
+            function sortTable(n) {
+                var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+                table = document.getElementById("table");
+                switching = true;
+                dir = "asc"; 
+                while (switching) {
+                  switching = false;
+                  rows = table.rows;
+                  for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    if (dir == "asc") {
+                      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                      }
+                    } else if (dir == "desc") {
+                      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                      }
+                    }
+                  }
+                  if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount ++; 
+                  } else {
+                    if (switchcount == 0 && dir == "asc") {
+                      dir = "desc";
+                      switching = true;
+                    }
+                  }
+                }
+              }
+            </script>
 @stop
 
 

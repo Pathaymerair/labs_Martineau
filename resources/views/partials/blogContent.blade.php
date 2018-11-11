@@ -10,6 +10,15 @@
 
 </div><br />
 @endif
+@if ($errors->any())
+<div class="alert alert-danger">
+<ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+</ul>
+</div>
+@endif
             <div class="col-md-8 col-sm-7 blog-posts">
                 <!-- Post item -->
                 
@@ -26,19 +35,19 @@
                     <div class="post-content">
                         <h2 class="post-title">{{$post->titre}}</h2>
                         <div class="post-meta">
-                            <a href="">@foreach($post->categorie as $cate)
-                                <span>{{$cate->nameCatego}} |</span>
-                                @endforeach</a>
-                            <a href="">@foreach($post->tag as $tag)
+                            <a href="">{{$post->user->name}}</a>
+                            <a href="">
+                                @foreach($post->tag as $tag)
                                 <span>{{$tag->nameTag}}</span>
-                            @endforeach</a>
+                            @endforeach
+                        </a>
                             <a href="">
                         
                                     {{$post->comment->where('state_id', 2)->count()}} comment(s)                              
                             
                          </a>
                         </div>
-                        <p>{{ substr($post->body, 0, 100) }}</p>
+                        <p>{!! substr($post->body, 0, 100) !!}</p>
                         <a href="/post/{{$post->id}}" class="read-more">Read More</a>
                     </div>
                 </div>

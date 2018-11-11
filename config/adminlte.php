@@ -128,11 +128,11 @@ return [
             'icon' => 'user',
         ],
    
-        [
-            'text' => 'Icons',
-            'url'  => '/icons',
-            'icon' => 'fonticons',
-        ],   
+        // [
+        //     'text' => 'Icons',
+        //     'url'  => '/icons',
+        //     'icon' => 'exclamation',
+        // ],   
         [
             'text' => 'Clients',
             'url'  => '/clients',
@@ -141,7 +141,7 @@ return [
         [
             'text' => 'Témoignages',
             'url'  => '/testimonials',
-            'icon' => 'commenting',
+            'icon' => 'address-book',
         ], 
         [
             'text'    => 'Manage site content',
@@ -150,26 +150,32 @@ return [
                 [
                     'text' => 'Manage Home Page',
                     'url'  => '/editSite',
+                    'icon' => 'edit',
                 ],
                 [
                     'text'    => 'Manage Services page',
                     'url'     => '/editServices',
+                    'icon' => 'edit',
                 ],
                 [
                     'text' => 'Manage Blog Page',
                     'url'  => '/editBlog',
+                    'icon' => 'edit',
                 ],
                 [
                     'text' => 'Manage Contact Page',
                     'url'  => '/editContact',
+                    'icon' => 'edit',
                 ],
                 [
                     'text' => 'Manage Carousel images',
                     'url'  => '/carousels',
+                    'icon' => 'edit',
                 ],
                 [
                     'text' => 'Manage Instagram images',
                     'url'  => '/insta',
+                    'icon' => 'edit',
                 ],
 
             ],
@@ -177,22 +183,22 @@ return [
 
         [
             'text'    => 'Manage posts content',
-            'icon'    => 'pencil-square-o',
+            'icon'    => 'newspaper',
             'submenu' => [
                 [
                     'text' => 'Posts',
                     'url'  => '/posts',
-                    'icon' => 'newspaper-o',
+                    'icon' => 'newspaper',
                 ], 
                 [
                     'text' => 'Comments',
                     'url'  => '/comments',
-                    'icon' => 'comment-o',
+                    'icon' => 'comments',
                 ], 
                 [
                     'text' => 'Categories',
                     'url'  => '/categories',
-                    'icon' => 'thumb-tack'
+                    'icon' => 'briefcase'
                 ],
                 [
                     'text' => 'Tags',
@@ -209,29 +215,33 @@ return [
         ],
         [
             'text'    => 'Projects',
-            'icon'    => 'file-archive-o',
+            'icon'    => 'project-diagram',
             'submenu' => [
                 [
                     'text' => 'Create a new project',
                     'url'  => '/projects_creation',
+                    'icon' => 'plus',
                 ],
                 [
                     'text'    => 'See projects',
                     'url'     => '/projects',
+                    'icon' => 'project-diagram',
                 ],
             ],
         ],
         [
             'text'    => 'Services',
-            'icon'    => 'file-archive-o',
+            'icon'    => 'certificate',
             'submenu' => [
                 [
                     'text' => 'Create a new service',
                     'url'  => '/services_creation',
+                    'icon'=> 'plus',
                 ],
                 [
                     'text'    => 'See services',
                     'url'     => '/services',
+                    'icon' => 'certificate'
                 ],
             ],
         ],

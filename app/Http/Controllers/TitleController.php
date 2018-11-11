@@ -18,35 +18,38 @@ use App\Categorie;
 use App\Post;
 use App\Comment;
 use Storage;
+use App\Carousel;
 
 use Mapper;
 use App\Http\Requests\EditHomeRequest;
 use App\Http\Requests\EditServicesRequest;
 use App\Http\Requests\EditBlogRequest;
+use App\Http\Requests\SearchRequest;
 use App\Http\Requests\EditContactRequest;
 
 class TitleController extends Controller
 {
     public function index(){
         $titles = Title::all();
+        $carousels = Carousel::all();
         $services = service::with('icon')->get();
         $testimonials = Testimonial::all();
         $services = Service::Paginate(9);
         $users = User::where('state_id', 2)->get();
         $roles = Role::all();
+        $admin = User::where('role_id', 1)->get();
         $imageUsers = ImageUser::all();
         do {
-            $user = $users->random();
-        } while (!$user->imageUser);
+            $user = $users->except('role_id', 1)->random();
+        } while (!$user->imageUser && $user != [$admin]);
         do {
-            $userDeux = $users->random();
-        } while (!$userDeux->imageUser && $userDeux != $user);
-        // $userDeux = $users->random();
+            $userDeux = $users->except('role_id', 1)->random();
+        } while (!$userDeux->imageUser && $userDeux !== $user && $userDeux != [$admin]);
         $serviceUn = $services->random();
         $serviceDeux = $services->random();
         $serviceTrois = $services->random();
      
-        return view('welcome', compact('titles', 'icons', 'services', 'testimonials', 'users', 'user', 'imageUser', 'userDeux', 'serviceUn', 'serviceDeux', 'serviceTrois'));
+        return view('welcome', compact('titles', 'icons', 'services', 'testimonials', 'users', 'user', 'imageUser', 'userDeux', 'serviceUn', 'serviceDeux', 'serviceTrois', 'carousels'));
     }
 
     public function indexBlog(){
@@ -80,7 +83,16 @@ class TitleController extends Controller
     }
     public function edit(){
         $titles = Title::all();
-        return view('pages.editSite', compact('titles'));
+        $users = User::where('state_id', 2)->get();
+        $userAdmin = User::where('role_id', 1)->get();
+        $imageUsers = ImageUser::all();
+        do {
+            $user = $users->random();
+        } while (!$user->imageUser);
+        do {
+            $userDeux = $users->random();
+        } while (!$userDeux->imageUser && $userDeux != $user);
+        return view('pages.editSite', compact('titles', 'users', 'user', 'userDeux', 'userAdmin'));
     }
 
     public function update(EditHomeRequest $request, $id){
@@ -122,6 +134,7 @@ class TitleController extends Controller
         $title->promoTitle = $request->promoTitle;
         $title->promoDesc = $request->promoDesc;
         $title->promoButton = $request->promoButton;
+        $title->user_id = $request->userAdmin;
 
 
 
@@ -139,13 +152,6 @@ class TitleController extends Controller
         $title->contactMail = $request->contactMail;
         $title->copyright = $request->copyright;
         $title->copyrightName = $request->copyrightName;
-
-
-
-
-        
-        
-        // 
         $title->save();
         return redirect('editSite')->with('success', 'Content updated !');
     }
@@ -192,7 +198,13 @@ class TitleController extends Controller
 
     public function editBlog(){
         $titles = Title::all();
-        return view('pages.editBlog', compact('titles'));
+        $instas = Instagram::all();
+        $instas = $instas->random(6);
+        $categories = Categorie::orderBy('nameCatego')->get();
+        $tags = Tag::orderBy('nameTag')->get();      
+        $posts = Post::where('state_id',2)->orderBy('id', 'desc')->paginate(3);
+        $comment = Comment::with('post')->where('state_id', 2)->get();
+        return view('pages.editBlog', compact('titles', 'instas', 'categories', 'tags', 'posts', 'comments'));
     }
 
     public function updateBlog(EditBlogRequest $request, $id){
@@ -256,7 +268,7 @@ class TitleController extends Controller
 
     }
 
-    public function search(Request $request){
+    public function search(SearchRequest $request){
         $titles = Title::find(1)->first();
         $instas = Instagram::all();
         $instas = $instas->random(6);
@@ -268,13 +280,13 @@ class TitleController extends Controller
         if ($search != ' '){
             $post = Post::where('titre', 'like', '%'.$search.'%')
                     ->orWhere('body', 'like', '%'.$search.'%')
-                    ->paginate()
+                    ->orderBy('id', 'desc')
+                    ->paginate(3)
                     ;
-                    if ($post->state_id == 2){
+                    
                 if (count($post) > 0){
                     return view('/test', compact('titles', 'instas', 'categories', 'tags', 'posts', 'comment'))->withDetails($post)->withQuery($search);
                 }
-            }
         }
         return redirect('blog')->with('ded', 'No post found !');
     }

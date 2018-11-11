@@ -14,7 +14,7 @@
         </div>
         <div class="card-text">
             <h2>{{$project->projectTitre}}</h2>
-            {{$project->projectDesc}}
+            {!!$project->projectDesc!!}
         </div>
     </div>
 </div>

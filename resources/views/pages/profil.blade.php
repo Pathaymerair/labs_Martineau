@@ -34,7 +34,7 @@
                     <img src="img/team/thumb/{{$user->imageUser->imageUserThumbnail}}" alt="">
           <!-- /.box-body -->
         </div>
-        <div class="box-body">
+        <div class="box-body" style='width: 50%'>
             <div class=" bg-info">
                 <div class="text-center">
                     <h4 class="mt-5">Last activity!</h4>

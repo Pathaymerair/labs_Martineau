@@ -7,7 +7,7 @@
             <i class="fa fa-fw fa-{{ isset($item['icon']) ? $item['icon'] : 'circle-o' }} {{ isset($item['icon_color']) ? 'text-' . $item['icon_color'] : '' }}"></i>
             {{ $item['text'] }}
             @if (isset($item['label']))
-                <span class="label label-{{ isset($item['label_color']) ? $item['label_color'] : 'primary' }}">{{ $item['label'] }}</span>
+                <span class="badge badge-{{ isset($item['label_color']) ? $item['label_color'] : 'primary' }}">{{ $item['label'] }}</span>
             @elseif (isset($item['submenu']))
                 <span class="caret"></span>
             @endif
@@ -27,7 +27,7 @@
                             <i class="fa fa-{{ isset($subitem['icon']) ? $subitem['icon'] : 'circle-o' }} {{ isset($subitem['icon_color']) ? 'text-' . $subitem['icon_color'] : '' }}"></i>
                             {{ $subitem['text'] }}
                             @if (isset($subitem['label']))
-                                <span class="label label-{{ isset($subitem['label_color']) ? $subitem['label_color'] : 'primary' }}">{{ $subitem['label'] }}</span>
+                                <span class="badge badge-{{ isset($subitem['label_color']) ? $subitem['label_color'] : 'primary' }}">{{ $subitem['label'] }}</span>
                             @endif
                         </a>
                     </li>
