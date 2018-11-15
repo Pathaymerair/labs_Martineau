@@ -1,5 +1,9 @@
 @extends('adminlte::page')
 
+@section('content_header')
+    <h1>Modification de {{$user->name}}</h1>
+@stop
+
 @section('content')
 
 <div class="container">

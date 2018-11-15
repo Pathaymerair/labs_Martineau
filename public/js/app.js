@@ -45654,6 +45654,7 @@ function progressCircle() {
 	});
 }
 
+
 (function ($) {
 	// Call all functions
 	loader();
@@ -45664,6 +45665,7 @@ function progressCircle() {
 	videoPopup();
 	accordions();
 	progressCircle();
+
 })(jQuery);
 
 /***/ }),

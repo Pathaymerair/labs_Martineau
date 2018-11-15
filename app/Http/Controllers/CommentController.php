@@ -25,10 +25,11 @@ class CommentController extends Controller
         $comment->msg = $request->msg;
         if (Auth::User()){
             $comment->user_id = Auth::User()->id;
+            if (Auth::user()->role_id == 1){
+                $comment->user_id = Auth::User()->id;
+                $comment->state_id = 2;
+            }
         }
-        if (Auth::user()->role_id == 1){
-            $comment->state_id = 2;
-        } 
         $comment->random_id = Random::inRandomOrder()->first()->id;
         $comment->post_id = $post->id;
         

@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Liste des users et création</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
         <table class="table table-dark" id='table'>
             <thead>
               <tr>
-                <th scope="col">#</th>
+           
                 <th scope="col">Image de profil</th>
                 <th scope="col" onclick="sortTable(1)">Name <i class="fas fa-sort"></i></th>
                 <th scope="col" onclick="sortTable(0)">Role <i class="fas fa-sort"></i></th>
@@ -27,7 +27,7 @@
                 @foreach ($users as $user)
                     @if ($user->state_id !== 3)
                 <tr>
-                  <th scope="row">{{$user->id}}</th>
+             
                   <td>
                       @if ($user->image_id)
                       <img src="img/team/thumb/{{$user->imageUser->imageUserThumbnail}}" alt="">
@@ -38,12 +38,12 @@
                   <td>{{$user->role->roleName}}</td>
                   <td>
                       @can('profil', $user->id)
-                        <form action="profil/{{$user->id}}" method='GET'>
-                            @csrf
-                                <button class="btn btn-success">
+                        {{-- <form action="profil/{{$user->id}}" method='GET'> --}}
+                            {{-- @csrf --}}
+                                <a class="btn btn-success" href='profil/{{$user->id}}'>
                                     Profil
-                                </button>
-                        </form>
+                                </a>
+                        {{-- </form> --}}
                       
                         @endcan
                   </td>
@@ -77,7 +77,8 @@
     </div>
 
     @can('superadmin')
-
+    <div class="box box-primary">
+        <div class="box-header with-border">
     <h1 class='mt-5'>Create new User</h1>
 
 
@@ -99,9 +100,9 @@
         @endif
 
 
-    <form action="/user/create" method="POST">
+    <form action="/user/create" method="POST" enctype="multipart/form-data">
         @csrf
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="name">User Name</label>
                 <input type="text" id='name' name='name' class='form-control' placeholder="name">
             </div>
@@ -120,9 +121,48 @@
                         <option value='{{$role->id}}'>{{$role->roleName}}</option>
                         @endforeach
                     </select>
-                  </div>
-            <button class="btn btn-success">Submit</button>
-        </form>
+                  </div> --}}
+                  
+                        
+                      </div>
+                      <!-- /.box-header -->
+                      <!-- form start -->
+                      
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="name">User Name</label>
+                                <input type="text" id='name' name='name' class='form-control' placeholder="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">email</label>
+                                <input type="email" id='email' name='email' class='form-control' placeholder="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id='password' name='password' class='form-control' placeholder='password'>
+                        </div>
+                          <div class="form-group">
+                            <label for="exampleInputFile">Photo de profil</label>
+                            <input type="file" id="exampleInputFile" name='image_id'>
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleFormControlSelect1">Example select</label>
+                              <select class="form-control" id="exampleFormControlSelect1" name='role_id'>
+                                  @foreach ($roles as $role)
+                                  <option value='{{$role->id}}'>{{$role->roleName}}</option>
+                                  @endforeach
+                              </select>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+          
+                        <div class="box-footer align-center">
+                          <button type="submit" class="btn btn-primary">Submit &raquo;</button>
+                        </div>
+                        
+                      </form>
+                      
+                      </div>
 
         @endcan
 

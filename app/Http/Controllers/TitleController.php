@@ -41,10 +41,10 @@ class TitleController extends Controller
         $imageUsers = ImageUser::all();
         do {
             $user = $users->except('role_id', 1)->random();
-        } while (!$user->imageUser && $user != [$admin]);
-        do {
             $userDeux = $users->except('role_id', 1)->random();
-        } while (!$userDeux->imageUser && $userDeux !== $user && $userDeux != [$admin]);
+        } while ($user->imageUser && $userDeux->imageUser && $userDeux == $user);
+        // do {
+        // } while ( && $userDeux != [$admin]);
         $serviceUn = $services->random();
         $serviceDeux = $services->random();
         $serviceTrois = $services->random();
@@ -88,10 +88,9 @@ class TitleController extends Controller
         $imageUsers = ImageUser::all();
         do {
             $user = $users->random();
-        } while (!$user->imageUser);
-        do {
             $userDeux = $users->random();
-        } while (!$userDeux->imageUser && $userDeux != $user);
+        } while (!$user->imageUser && !$userDeux->imageUser && $userDeux != $user);
+
         return view('pages.editSite', compact('titles', 'users', 'user', 'userDeux', 'userAdmin'));
     }
 
@@ -134,7 +133,12 @@ class TitleController extends Controller
         $title->promoTitle = $request->promoTitle;
         $title->promoDesc = $request->promoDesc;
         $title->promoButton = $request->promoButton;
-        $title->user_id = $request->userAdmin;
+        if ($request->userAdmin){
+            $title->user_id = $request->userAdmin;
+        } else {
+            $title->user_id = $title->user_id;
+        }
+      
 
 
 
@@ -277,7 +281,8 @@ class TitleController extends Controller
         $posts = Post::where('state_id',2)->orderBy('id', 'desc')->paginate(3);
         $comment = Comment::with('post')->where('state_id', 2)->get();
         $search = $request->search;
-        if ($search != ' '){
+        
+        if ($search){
             $post = Post::where('titre', 'like', '%'.$search.'%')
                     ->orWhere('body', 'like', '%'.$search.'%')
                     ->orderBy('id', 'desc')
@@ -356,4 +361,11 @@ class TitleController extends Controller
         return view('/test', compact('titles', 'instas', 'categories', 'tags', 'posts', 'comment'))->withDetails($postArray)->withQuery($search);
     }
 
+    public function pending(){
+        $comments = Comment::where('state_id', 1)->get();
+        $posts = Post::where('state_id', 1)->get();
+        $tags = Tag::where('state_id', 1)->get();
+        $categories = Categorie::where('state_id', 1)->get();
+        return view('pages.pending', compact('comments', 'posts', 'tags', 'categories'));
+    }
 }

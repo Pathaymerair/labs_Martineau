@@ -22,14 +22,14 @@
         @if ($service->state_id < 3)
             <div class="col-xs-4">
                 <div class="sv-card">
-                        <div class="card-img">
-                                <div class="icon-box">
-                                        <div class="icon">
-                                            <i class="{{$service->icon->svg}}"></i> 
-                                        </div>
-                                    </div>
-                            </div>
                     <div class="card-text">
+                           
+                                    <div class="icon-box text-center">
+                                            <div class="icon ">
+                                                <i class="{{$service->icon->svg}}"></i> 
+                                            </div>
+                                        </div>
+                                
                         <h2>{{$service->serviceTitre}}</h2>
                         {!!$service->serviceDesc!!}
                         <div class="col-xs-6">

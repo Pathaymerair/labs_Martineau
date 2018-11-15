@@ -1,5 +1,9 @@
 @extends('adminlte::page')
 
+@section('content_header')
+    <h1>Liste des témoignages et création</h1>
+@stop
+
 @section('content')
 
 <div class="container">
@@ -55,17 +59,28 @@
     <div class="row">
         @foreach ($testimonials as $testi)
         @if ($testi->state_id == 2 || $testi->state_id == 1)
-            <div class="col-xs-4">
+            <div class="col-xs-4 mt-5 bg-light ml-1">
                 {!!$testi->testiDesc!!}
-                <form action="/testimonial/edit/{{$testi->id}}" method="GET">
-                    @csrf
-                    <button class="btn btn-warning">Edit</button>
-                </form>
-                <form action="/testimonial/delete/{{$testi->id}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger">Delete</button>
-                </form>
+                <div class="client-info">
+                    <div class="avatar">
+                        <img src="img/avatar/{{$testi->client->clientImg}}" alt="">
+                    </div>
+                    <div class="client-name">
+                        <h4>{{$testi->client->clientName}}</h4>
+                        <p>{{$testi->client->clientCompany}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <form action="/testimonial/edit/{{$testi->id}}" method="GET">
+                        @csrf
+                        <button class="btn btn-warning mx-auto">Edit</button>
+                    </form>
+                    <form action="/testimonial/delete/{{$testi->id}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger ml-4">Delete</button>
+                    </form>
+                </div>
             </div>
             @endif
         @endforeach

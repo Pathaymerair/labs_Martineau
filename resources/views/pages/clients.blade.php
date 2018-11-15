@@ -53,7 +53,7 @@
         <table class="table table-dark mt-5">
             <thead>
               <tr>
-                <th scope="col">#</th>
+            
                 <th scope="col">Image de profil</th>
                 <th scope="col">Name</th>
                 <th scope="col">Entreprise</th>
@@ -66,7 +66,7 @@
                 @foreach ($clients as $client)
                     @if($client->state_id == 2 || $client->state_id == 1)
                 <tr>
-                  <th scope="row">{{$client->id}}</th>
+              
                   <td>
                       @if ($client->clientImg)
                       <img src="img/avatar/{{$client->clientImg}}" alt="">

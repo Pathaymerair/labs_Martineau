@@ -5,7 +5,6 @@
 <div class="container">
 
 
-@endif
 
 
 <div class="container">

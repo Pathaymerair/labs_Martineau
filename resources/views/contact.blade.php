@@ -8,7 +8,22 @@
 		</div>
 	</div>
 
-@include('partials.navbar')
+	<header class="header-section">
+		<div class="logo">
+			<img src="img/logo.png" alt=""><!-- Logo -->
+		</div>
+		<!-- Navigation -->
+		<div class="responsive myDiv"><i class="fa fa-bars"></i></div>
+		<nav>
+			<ul class="menu-list nav">
+				<li class="toggle"><a href="/" >Main</a></li>
+				<li class=''><a href="/service" >Services</a></li>
+				<li class=''><a href="/blog" >Blog</a></li>
+				<li class='active'><a href="/contact" >Contact</a></li>
+				<li class='toggle'><a href="home" >Home</a></li>
+			</ul>
+		</nav>
+	</header>
 
 @include('partials.contactHeader')
 

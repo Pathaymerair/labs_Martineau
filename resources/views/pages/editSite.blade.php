@@ -201,7 +201,7 @@
                     @if ($titles[0]->user->profil->profilJob)
                         <h3>{{$titles[0]->user->profil->profilJob}}</h3>
                     @endif
-                        <select>
+                        <select name='userAdmin' id='userAdmin'>
                             @foreach ($userAdmin as $item)
                                 <option name='userAdmin' id='userAdmin' value="{{$item->id}}">{{$item->name}}</option>
                             @endforeach

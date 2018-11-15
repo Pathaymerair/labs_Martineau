@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\TagRequest;
+use App\Interfaces\CreateInterface;
 use App\Tag;
 use App\State;
 use Auth;
 
-class TagController extends Controller
+class TagController extends Controller implements CreateInterface
 {
     public function index(){
         $tags = Tag::all();
@@ -16,6 +17,7 @@ class TagController extends Controller
         return view('pages.tags', compact('tags'));
     }
     public function create(TagRequest $request){
+        parent::create();
         $tag = new Tag;
         $tag->nameTag = $request->nameTag;
         $tag->user_id = Auth::User()->id;

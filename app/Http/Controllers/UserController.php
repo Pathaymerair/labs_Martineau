@@ -53,12 +53,31 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role_id = $request->role_id;
-        // $user->password = $request->bcrypt('password');
         $user->password = Hash::make($request->password);
+        if ($request->file('image_id')){
+
+            $images= $request->file('image_id');
+              
+            $filenamethumb = time().'thumb'.$images->hashName();
+            $filename = time().$images->hashName();
+            
+            $resized = ImageIntervention::make($images)->resize(60, 60);
+            $resized->save('img/team/thumb/'.$filenamethumb);
+    
+            $resize = ImageIntervention::make($images)->resize(360,448);
+            $resize->save('img/team/imgnm/'.$filename);
+            
+            $image = new ImageUser;
+            $image->imageUser = $filename;
+            $image->imageUserThumbnail = $filenamethumb;
+            $image->save();
+            $user->image_id = $image->id;
+        }
         $user->save();
         $profil = new Profil;
         $profil->user_id = $user->id;
         $profil->save();
+        
         return redirect('/users')->with('success', 'User created successfully !');
 
     }

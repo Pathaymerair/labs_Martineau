@@ -26,7 +26,7 @@
         <table class="table table-dark" id='table'>
             <thead>
               <tr>
-                <th scope="col">#</th>
+              
      
                 <th scope="col" onclick="sortTable(0)">Post Title <i class="fas fa-sort"></i></th>
                 <th scope="col" onclick="sortTable(1)">Auteur <i class="fas fa-sort"></i></th>
@@ -42,11 +42,11 @@
                 @foreach ($comments as $comment)
                 @if ($comment->state_id < 3)
                 <tr>
-                  <th scope="row">{{$comment->id}}</th>
+       
 
              
                   <td><a href="/post/{{$comment->post->id}}">{{$comment->post->titre}}</a></td>
-                  <td>{{$comment->user->name}}</td>
+                  <td>{{$comment->name}}</td>
                   <td>{{$comment->state->etat}}</td>
                   <td> <a href="/comment/answer/{{$comment->id}}"> Répondre </a></td>
                   <td>

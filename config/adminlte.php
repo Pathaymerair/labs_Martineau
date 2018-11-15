@@ -106,46 +106,55 @@ return [
     | layout. The 'can' is a filter on Laravel's built in Gate functionality.
     |
     */
-
+    
     'menu' => [
         'MAIN NAVIGATION',
-        [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
         [
             'text'        => 'Pages',
             'url'         => '/',
             'icon'        => 'file',
 
         ],
+        [
+            'text'        => 'Pending',
+            'url'         => '/',
+            'icon'        => 'file',
+            'label'       => 6,
+            'label_color' => 'blue'
+
+        ],
+
 
         'ACCOUNT SETTINGS',
+  
         [
             'text' => 'users',
             'url'  => '/users',
             'icon' => 'user',
+            'can' => 'admin'
         ],
    
-        // [
-        //     'text' => 'Icons',
-        //     'url'  => '/icons',
-        //     'icon' => 'exclamation',
-        // ],   
+        [
+            'text' => 'Icons',
+            'url'  => '/icons',
+            'icon' => 'exclamation',
+        ],   
         [
             'text' => 'Clients',
             'url'  => '/clients',
             'icon' => 'users',
+            'can' => 'superadmin',
         ],     
         [
             'text' => 'Témoignages',
             'url'  => '/testimonials',
             'icon' => 'address-book',
+            'can' => 'superadmin'
         ], 
         [
             'text'    => 'Manage site content',
             'icon'    => 'sitemap',
+            'can' => 'superadmin',
             'submenu' => [
                 [
                     'text' => 'Manage Home Page',
@@ -184,6 +193,7 @@ return [
         [
             'text'    => 'Manage posts content',
             'icon'    => 'newspaper',
+            'can' => 'admin',
             'submenu' => [
                 [
                     'text' => 'Posts',
@@ -216,6 +226,7 @@ return [
         [
             'text'    => 'Projects',
             'icon'    => 'project-diagram',
+            'can' => 'admin',
             'submenu' => [
                 [
                     'text' => 'Create a new project',

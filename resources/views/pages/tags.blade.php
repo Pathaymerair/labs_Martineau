@@ -1,6 +1,8 @@
 @extends('adminlte::page')
 
-
+@section('content_header')
+    <h1>Liste des tags et création</h1>
+@stop
 @section('content')
 
 <div class="container">
@@ -21,7 +23,7 @@
         
     </div><br />
     @endif
-    <form action="/tag/create" method="POST">
+    <form action="/tag/create" class='mt-5' method="POST">
         @csrf
             <div class="form-group">
                 <label for="nameTag">Tag Name</label>
@@ -40,7 +42,7 @@
     <table class="table table-dark"id='table'>
         <thead>
           <tr>
-            <th scope="col">#</th>
+        
             <th scope="col" onclick="sortTable(0)">Nom <i class="fas fa-sort"></i></th>
             <th scope="col" onclick="sortTable(1)">Auteur <i class="fas fa-sort"></i></th>
             <th scope="col" onclick="sortTable(2)">Etat <i class="fas fa-sort"></i></th>
@@ -53,7 +55,7 @@
             @foreach ($tags as $tag)
                 
             <tr>
-              <th scope="row">{{$tag->id}}</th>
+         
 
               <td>{{$tag->nameTag}}</td>
               <td>{{$tag->user->name}}</td>

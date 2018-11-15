@@ -40,7 +40,7 @@
     <table class="table table-dark" id='table'>
         <thead>
           <tr>
-            <th scope="col">#</th>
+           
             <th scope="col" onclick="sortTable(0)">Nom <i class="fas fa-sort"></i></th>
             <th scope="col" onclick="sortTable(1)">Auteur <i class="fas fa-sort"></i></th>
             <th scope="col" onclick="sortTable(2)">Etat <i class="fas fa-sort"></i></th>
@@ -53,7 +53,7 @@
             @foreach ($categories as $categorie)
                 @if($categorie->state_id < 3)
             <tr>
-              <th scope="row">{{$categorie->id}}</th>
+             
 
               <td>{{$categorie->nameCatego}}</td>
               <td>{{$categorie->user->name}}</td>

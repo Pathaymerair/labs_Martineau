@@ -40,24 +40,26 @@
         </div>
         <button class="btn btn-success">Submit</button>
     </form>
-    <div class="row bg-black mt-5">
+    <div class="row  mt-5 ">
         @foreach ($instas as $insta)
             @if ($insta->state_id == 1 || $insta->state_id == 2)
-        <div class="col-xs-4">
-            <img src="/img/instagram/thumb/{{$insta->instaThumb}}" alt="">
-        </div>
-        <div class="col-xs-1">
-            <form action="/insta/edit/{{$insta->id}}" method="GET">
-            @csrf
-            <button class="btn btn-warning">Edit</button></form>
-        </div>
-        <div class="col-xs-1">
-                <form action="/insta/delete/{{$insta->id}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger">Delete</button>
-            </form>
+        <div class="col-xs-3 ml-2 bg-light mt-3">
+            <img class='text-center align-center' src="/img/instagram/thumb/{{$insta->instaThumb}}" alt="">
+            <div class="row text-center mt-2">
+                    <form action="/insta/edit/{{$insta->id}}" method="GET">
+                        @csrf
+                        <button class="btn btn-warning">Edit</button></form>
+                   
+                            <form action="/insta/delete/{{$insta->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger ml-5">Delete</button>
+                        </form>
             </div>
+        </div>
+     
+        
+           
             @endif
         @endforeach
     </div>

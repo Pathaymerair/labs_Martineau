@@ -40,23 +40,31 @@
         </div>
         <button class="btn btn-success">Submit</button>
     </form>
-    <div class="row bg-black mt-5">
+    <div class="row bg-light mt-5">
         @foreach ($carousels as $carou)
-            
         <div class="col-xs-4">
-            <img src="/img/carousel/thumb/{{$carou->carouThumb}}" alt="">
-        </div>
-        <div class="col-xs-1">
-            <form action="/carou/edit/{{$carou->id}}" method="GET">
-            @csrf
-            <button class="btn btn-warning">Edit</button></form>
-        </div>
-        <div class="col-xs-1">
-                <form action="/carou/delete/{{$carou->id}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger">Delete</button></form>
+            <div class="sv-card">
+                <div class="card-img">
+                    <img src="/img/carousel/thumb/{{$carou->carouThumb}}" alt="">
+                </div>
+                <div class="card-text row">
+                   
+                        <form action="/carou/edit/{{$carou->id}}" method="GET">
+                        @csrf
+                        <button class="btn btn-warning">Edit</button></form>
+                  
+             
+                            <form action="/carou/delete/{{$carou->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger ml-5">Delete</button></form>
+                        
+                </div>
             </div>
+            
+
+        </div>
+
         @endforeach
     </div>
     

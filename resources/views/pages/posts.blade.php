@@ -23,30 +23,48 @@
 
 
 <div class="container">
-        <table class="table table-dark" id='table'>
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col" onclick="sortTable(0)">Date <i class="fas fa-sort"></i></th>
-                <th scope="col" onclick="sortTable(1)">Titre <i class="fas fa-sort"></i></th>
-                <th scope="col" onclick="sortTable(2)">Auteur <i class="fas fa-sort"></i></th>
-                <th scope="col" onclick="sortTable(3)">State <i class="fas fa-sort"></i></th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
 
-              </tr>
-            </thead>
-            <tbody>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Posts</h3>
     
-                @foreach ($posts as $post)
+                  <div class="box-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+    
+                      <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover" id='table'>
+                    <tbody><tr>
+                      
+                        <th scope="col" onclick="sortTable(0)">Date <i class="fas fa-sort"></i></th>
+                        <th scope="col" onclick="sortTable(1)">Titre <i class="fas fa-sort"></i></th>
+                        <th scope="col" onclick="sortTable(2)">Auteur <i class="fas fa-sort"></i></th>
+                        <th scope="col" onclick="sortTable(3)">State <i class="fas fa-sort"></i></th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    @foreach ($posts as $post)
                     @if ($post->state_id == 1 || $post->state_id == 2)
                 <tr>
-                  <th scope="row">{{$post->id}}</th>
+                    <td>{{$post->created_at->format('d m y')}} </td>
+                 
 
-                  <td>{{$post->created_at->format('d m y')}} </td>
                   <td><a href="/post/{{$post->id}}">{{$post->titre}}</a></td>
                   <td>{{$post->user->name}}</td>
-                  <td>{{$post->state->etat}}</td>
+                  @if ($post->state_id == 2)
+                  <td><span class="label label-success">{{$post->state->etat}}</span></td>
+                    @elseif($post->state_id == 1)
+                    <td><span class="label label-warning">{{$post->state->etat}}</span></td>
+                    @endif
 
                   <td>
                     @can('post', $post->id)
@@ -69,9 +87,15 @@
                 </tr>
                 @endif
                 @endforeach
-    
-            </tbody>
-          </table>
+
+                  </tbody>
+                </table>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+          </div>
           {{$posts->links()}} 
     </div>
 

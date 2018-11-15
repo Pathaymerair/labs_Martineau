@@ -29,6 +29,7 @@ class UserRequest extends FormRequest
             'email' => "unique:users,email,$this->id,id",
             'password' =>'required',
             'role_id' => 'required',
+            'image_id' => 'required',
         ];
     }
 }

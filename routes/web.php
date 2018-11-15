@@ -26,6 +26,10 @@ Route::post('/updateContactPage/{id}', 'TitleController@updateContact')->middlew
 Route::post('/search', 'TitleController@search');
 Route::get('/tag/search', 'TitleController@searchTag');
 Route::get('/categorie/search', 'TitleController@searchCategorie');
+Route::get('/pending', 'TitleController@pending');
+
+Route::get('/editSiteUn', 'EditSiteController@edit')->middleware('can:superadmin');
+Route::post('/logo/{id}', 'EditSiteController@logo');
 
 
 Route::get('/users', 'UserController@index')->middleware('can:admin');
@@ -61,7 +65,7 @@ Route::post('/post/tag/create', 'PostController@tag');
 
 Route::get('/comments', 'CommentController@index')->middleware('can:admin');
 Route::get('/comment/{id}/edit', 'CommentController@edit')->middleware('can:comments,id');
-Route::post('/comment/create/{id}', 'CommentController@create')->middleware('can:admin');
+Route::post('/comment/create/{id}', 'CommentController@create');
 Route::post('/comment/{id}', 'CommentController@update')->middleware('can:comments,id');
 Route::delete('/comment/delete/{id}', 'CommentController@destroy')->middleware('can:comments,id');
 Route::get('/comment/answer/{id}', 'CommentController@answer')->middleware('can:admin');
